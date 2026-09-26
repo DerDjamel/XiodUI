@@ -22,5 +22,6 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 - `keepMounted` — Whether to keep the HTML element in the DOM when the viewport isn't scrollable.
 - `orientation` — Whether the scrollbar controls vertical or horizontal scroll.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
+- `visibility` — When the scrollbar shows: `auto` while scrolling or hovered, `hover` only while hovered, `always` all the time.
 
 Required props are bold. Full docs: https://ui.xiod.dev/docs

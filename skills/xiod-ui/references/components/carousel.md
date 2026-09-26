@@ -10,13 +10,18 @@ Renders a `<div>` and takes its props. Pass `render` to render a different eleme
 
 | Prop | Type | Default |
 | :--- | :--- | :--- |
-| activeIndex | `number \| undefined` | — |
 | autoplay | `boolean \| undefined` | `false` |
 | autoplayInterval | `number \| undefined` | `5000` |
 | loop | `boolean \| undefined` | `true` |
 | opts | `CarouselOptions \| undefined` | — |
 | orientation | `"horizontal" \| "vertical" \| undefined` | `"horizontal"` |
 | plugins | `CarouselPlugin[] \| undefined` | — |
+
+- `autoplay` — Whether the carousel advances on its own. It pauses while hovered or focused, while the tab is hidden, and when the user prefers reduced motion.
+- `autoplayInterval` — The time between slides when `autoplay` is on, in milliseconds.
+- `loop` — Whether going past the last slide returns to the first, and back from the first to the last.
+- `opts` — Options for the scrolling behaviour, such as `align`, `dragFree` or `speed`. `loop` set here takes precedence over the `loop` prop.
+- `plugins` — Plugins to run with the carousel. Each plugin's `init` receives the carousel API once it is ready.
 
 ## CarouselContent
 
@@ -60,7 +65,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 useCarousel()
 ```
 
-Returns `{ carouselRef: (node: HTMLElement | null) => void; api: CarouselApi | undefined; scrollPrev: () => void; scrollNext: () => void; canScrollPrev: boolean; canScrollNext: boolean; orientation: "horizontal" | "vertical"; autoplay?: boolean | undefined; autoplayInterval?: number | undefined; loop?: boolean | undefined; activeIndex?: number | undefined }`.
+Returns `{ carouselRef: (node: HTMLElement | null) => void; api: CarouselApi | undefined; scrollPrev: () => void; scrollNext: () => void; canScrollPrev: boolean; canScrollNext: boolean; orientation: "horizontal" | "vertical"; activeIndex: number; autoplay?: boolean | undefined; autoplayInterval?: number | undefined; loop?: boolean | undefined }`.
 
 ## useCarouselViewport
 

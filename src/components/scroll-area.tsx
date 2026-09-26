@@ -16,10 +16,15 @@ function ScrollArea({
   scrollbarVisibility = "auto",
   ...props
 }: ScrollAreaPrimitive.Root.Props & {
+  /** Whether the content fades out at an edge that has more to scroll to. */
   scrollFade?: boolean;
+  /** Whether to reserve space for the scrollbars so they don't overlap the content. */
   scrollbarGutter?: boolean;
+  /** The thickness of the scrollbars. */
   scrollbarSize?: ScrollBarProps["size"];
+  /** The scrollbar style. `card` gives the track a background and border. */
   scrollbarVariant?: ScrollBarProps["variant"];
+  /** When the scrollbars show: `auto` while scrolling or hovered, `hover` only while hovered, `always` all the time. */
   scrollbarVisibility?: ScrollBarProps["visibility"];
 }): React.JSX.Element {
   return (

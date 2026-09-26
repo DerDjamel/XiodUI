@@ -41,8 +41,10 @@ function PopoverPopup({
   align?: PopoverPrimitive.Positioner.Props["align"];
   sideOffset?: PopoverPrimitive.Positioner.Props["sideOffset"];
   alignOffset?: PopoverPrimitive.Positioner.Props["alignOffset"];
+  /** Whether the popup uses the compact look of a tooltip: smaller text, tighter padding and a width that fits the content. */
   tooltipStyle?: boolean;
   anchor?: PopoverPrimitive.Positioner.Props["anchor"];
+  /** Whether to hide the arrow that points at the trigger. */
   hideArrow?: boolean;
   collisionAvoidance?: PopoverPrimitive.Positioner.Props["collisionAvoidance"];
 }): React.JSX.Element {

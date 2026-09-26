@@ -9,8 +9,11 @@ import { Button } from "./button";
 import { IconSlot } from "./icon-provider";
 
 export interface Option {
+  /** The value this option selects. */
   id: string;
+  /** The option's name, shown beside its icon. */
   label: string;
+  /** The option's icon component. */
   icon: React.ComponentType<React.ComponentProps<"svg">>;
 }
 
@@ -18,11 +21,17 @@ export interface OptionPickerProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "onChange"
 > {
+  /** The options to choose from. Up to five are shown; any more are left out. */
   options: Option[];
+  /** The `id` of the selected option. Use with `onChange` to control it. */
   value?: string;
+  /** The `id` of the option selected at first, when it isn't controlled. Defaults to the first option. */
   defaultValue?: string;
+  /** Called with the option's `id` when the user picks one. */
   onChange?: (value: string) => void;
+  /** Classes for the button that shows the selected option. */
   triggerClassName?: string;
+  /** Classes for the popup that lists the options. */
   popupClassName?: string;
 }
 

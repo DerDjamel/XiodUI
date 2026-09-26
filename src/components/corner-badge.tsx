@@ -62,9 +62,13 @@ const cornerBadgeVariants = cva(
 interface CornerBadgeProps extends useRender.ComponentProps<"span"> {
   variant?: VariantProps<typeof badgeVariants>["variant"];
   size?: VariantProps<typeof badgeVariants>["size"];
+  /** The corner of the parent element the badge sits on. */
   position?: VariantProps<typeof cornerBadgeVariants>["position"];
+  /** The shape of the element the badge sits on. `circular` moves the badge in to meet the edge of a round element, such as an `Avatar`. */
   overlap?: VariantProps<typeof cornerBadgeVariants>["overlap"];
+  /** Whether to show a small dot instead of the badge's content. */
   dot?: boolean;
+  /** Whether to hide the badge. It scales and fades out rather than unmounting. */
   invisible?: boolean;
 }
 

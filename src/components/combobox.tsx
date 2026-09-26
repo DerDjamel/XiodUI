@@ -74,12 +74,17 @@ function ComboboxInput({
   clearIcon,
   ...props
 }: Omit<ComboboxPrimitive.Input.Props, "size"> & {
+  /** Whether to show a button at the end of the input that opens the list. */
   showTrigger?: boolean;
+  /** Whether to show a button at the end of the input that clears it. */
   showClear?: boolean;
+  /** Decorative content, such as an icon, shown at the start of the input. It is hidden from screen readers. */
   startAddon?: React.ReactNode;
   size?: "sm" | "default" | "lg" | number;
   ref?: React.Ref<HTMLInputElement>;
+  /** Props for the open button, such as `aria-label` or `className`. */
   triggerProps?: ComboboxPrimitive.Trigger.Props;
+  /** Props for the clear button, such as `aria-label` or `className`. */
   clearProps?: ComboboxPrimitive.Clear.Props;
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   triggerIcon?: React.ReactNode;
@@ -389,6 +394,7 @@ function ComboboxChips({
   startAddon,
   ...props
 }: ComboboxPrimitive.Chips.Props & {
+  /** Decorative content, such as an icon, shown at the start of the chips. It is hidden from screen readers. */
   startAddon?: React.ReactNode;
 }): React.JSX.Element {
   const { chipsRef } = React.useContext(ComboboxContext);
@@ -422,6 +428,7 @@ function ComboboxChip({
   removeProps,
   ...props
 }: ComboboxPrimitive.Chip.Props & {
+  /** Props for the chip's remove button, such as `aria-label` or `className`. */
   removeProps?: ComboboxPrimitive.ChipRemove.Props;
 }): React.JSX.Element {
   return (

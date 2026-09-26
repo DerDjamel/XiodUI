@@ -139,6 +139,7 @@ function SelectPopup({
   sideOffset?: SelectPrimitive.Positioner.Props["sideOffset"];
   align?: SelectPrimitive.Positioner.Props["align"];
   alignOffset?: SelectPrimitive.Positioner.Props["alignOffset"];
+  /** Whether the popup opens with the selected item placed over the trigger, like a native select. When `false`, the popup opens beside the trigger. */
   alignItemWithTrigger?: SelectPrimitive.Positioner.Props["alignItemWithTrigger"];
   anchor?: SelectPrimitive.Positioner.Props["anchor"];
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */

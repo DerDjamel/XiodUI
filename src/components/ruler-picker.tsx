@@ -88,12 +88,19 @@ export interface RulerPickerProps
       "onChange" | "value" | "defaultValue"
     >,
     VariantProps<typeof rulerPickerVariants> {
+  /** The lowest value on the ruler. */
   min?: number;
+  /** The highest value on the ruler. */
   max?: number;
+  /** The selected whole number. Use with `onChange` to control it. */
   value?: number;
+  /** The value selected at first, when it isn't controlled. Defaults to `min`. */
   defaultValue?: number;
+  /** Called with the new value as the ruler settles on a mark, by scrolling, dragging or the arrow keys. */
   onChange?: (value: number) => void;
+  /** The distance between two whole-number marks, in pixels. */
   itemWidth?: number;
+  /** The number of small ticks drawn between two whole-number marks. With `9`, the middle tick is drawn longer. */
   subDivisions?: number;
 }
 

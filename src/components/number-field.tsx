@@ -119,6 +119,7 @@ function NumberFieldScrubArea({
   label,
   ...props
 }: NumberFieldPrimitive.ScrubArea.Props & {
+  /** The label text. Dragging across it changes the value. */
   label: string;
 }): React.JSX.Element {
   const context = React.useContext(NumberFieldContext);

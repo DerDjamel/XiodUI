@@ -24,8 +24,8 @@ import { ThemeProvider, useTheme } from "xiod-ui/theme-provider";
 - `enableSystemTheme` — Follow `prefers-color-scheme` when the mode is `"system"`.
 - `nonce` — Nonce for the inline script that applies the stored theme before the page paints. Only needed when a Content Security Policy blocks inline scripts without one.
 - `paletteAttribute` — Attribute used to write the palette. Must differ from `attribute`, or the two axes overwrite each other on the same element.
-- `paletteStorageKey` — localStorage key used to remember the palette.
-- `storageKey` — localStorage key used to remember the choice.
+- `paletteStorageKey` — The localStorage key that remembers the user's palette.
+- `storageKey` — The localStorage key that remembers the user's mode.
 
 ## useTheme
 

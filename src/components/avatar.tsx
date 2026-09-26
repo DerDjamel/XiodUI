@@ -34,7 +34,10 @@ const avatarVariants = cva(
 export interface AvatarProps
   extends
     React.ComponentProps<typeof AvatarPrimitive.Root>,
-    VariantProps<typeof avatarVariants> {}
+    VariantProps<typeof avatarVariants> {
+  /** The avatar's shape: a circle or a square with rounded corners. */
+  shape?: VariantProps<typeof avatarVariants>["shape"];
+}
 
 function Avatar({
   className,

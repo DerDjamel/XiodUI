@@ -106,8 +106,11 @@ type MorphicToastOffsetConfig = Partial<
 
 export interface MorphicToasterProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
+  /** Where toasts appear when they don't set their own `position`. */
   position?: MorphicToastPosition;
+  /** The distance from the screen edges, as a number of pixels or a CSS length. Pass an object to set `top`, `right`, `bottom` and `left` separately; only the edges the toasts sit against apply. */
   offset?: MorphicToastOffsetValue | MorphicToastOffsetConfig;
+  /** Defaults for every toast, such as `duration` or `styles`. Options passed to an individual toast override them. */
   options?: Partial<MorphicToastOptions>;
 }
 

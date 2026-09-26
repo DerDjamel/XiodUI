@@ -116,12 +116,14 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
   - `true`: Move focus based on the default behavior (trigger or previously focused element).
   - `RefObject`: Move focus to the ref element.
   - `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`). Return an element to focus, `true` to use the default behavior, `null` to fall back to the default behavior, or `false`/`undefined` to do nothing.
+- `hideArrow` — Whether to hide the arrow that points at the trigger.
 - `initialFocus` — Determines the element to focus when the popover is opened. By default, focus moves to the first tabbable element inside the popup, except when the popover is opened by touch — then the popup itself is focused to avoid opening the virtual keyboard.
   - `false`: Do not move focus.
   - `true`: Move focus based on the default behavior (first tabbable element or popup).
   - `RefObject`: Move focus to the ref element.
   - `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`). Return an element to focus, `true` to use the default behavior, `null` to fall back to the default behavior, or `false`/`undefined` to do nothing.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
+- `tooltipStyle` — Whether the popup uses the compact look of a tooltip: smaller text, tighter padding and a width that fits the content.
 
 ## PopoverTitle
 

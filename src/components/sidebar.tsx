@@ -54,8 +54,11 @@ function SidebarProvider({
   children,
   ...props
 }: React.ComponentProps<"div"> & {
+  /** Whether the sidebar is expanded at first, when it isn't controlled. */
   defaultOpen?: boolean;
+  /** Whether the sidebar is expanded on larger screens. Use with `onOpenChange` to control it. On mobile, the sidebar opens as a sheet with its own state. */
   open?: boolean;
+  /** Called when the sidebar expands or collapses on larger screens, including through the ⌘B or Ctrl+B shortcut. */
   onOpenChange?: (open: boolean) => void;
 }): React.JSX.Element {
   const isMobile = useIsMobile();
@@ -156,8 +159,10 @@ function Sidebar({
   children,
   ...props
 }: React.ComponentProps<"div"> & {
+  /** The side of the screen the sidebar sits on. */
   side?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset" | "modal";
+  /** How the sidebar collapses: `offcanvas` slides it out of view, `icon` shrinks it to a strip of icons, and `none` keeps it open. */
   collapsible?: "offcanvas" | "icon" | "none";
 }): React.JSX.Element {
   const { isMobile, state, open, setOpen, openMobile, setOpenMobile } =
@@ -600,7 +605,9 @@ function SidebarMenuButton({
   render,
   ...props
 }: useRender.ComponentProps<"button"> & {
+  /** Whether the button is for the current page or view. Highlights it. */
   isActive?: boolean;
+  /** A tooltip shown beside the button while the sidebar is collapsed to icons: its text, or props for `TooltipPopup`. */
   tooltip?: string | React.ComponentProps<typeof TooltipPopup>;
 } & VariantProps<typeof sidebarMenuButtonVariants>): React.JSX.Element {
   const { isMobile, state } = useSidebar();
@@ -652,6 +659,7 @@ function SidebarMenuAction({
   render,
   ...props
 }: useRender.ComponentProps<"button"> & {
+  /** Whether the action is hidden on larger screens until its menu item is hovered or focused. */
   showOnHover?: boolean;
 }): React.ReactElement {
   const defaultProps = {
@@ -710,6 +718,7 @@ function SidebarMenuSkeleton({
   render,
   ...props
 }: useRender.ComponentProps<"div"> & {
+  /** Whether the placeholder includes a square for an icon. */
   showIcon?: boolean;
 }): React.ReactElement {
   const skeletonId = React.useId();
@@ -802,6 +811,7 @@ function SidebarMenuSubButton({
   ...props
 }: useRender.ComponentProps<"a"> & {
   size?: "sm" | "md";
+  /** Whether the link is for the current page or view. Highlights it. */
   isActive?: boolean;
 }): React.ReactElement {
   const defaultProps = {

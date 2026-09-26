@@ -23,6 +23,7 @@ Methods: `add`, `close`, `promise`, `update`.
 | timeout | `number \| undefined` | — |
 | toastManager | `ToastManager<any> \| undefined` | — |
 
+- `closeButton` — Whether every toast shows a close button. A toast's own `closeButton` overrides this.
 - `closeIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
 - `limit` — The maximum number of toasts that can be displayed at once. When the limit is exceeded, the oldest toasts are marked as `limited` (via the `data-limited` attribute) rather than removed, so they can be hidden or animated out.
 - `timeout` — The default amount of time (in ms) before a toast is auto dismissed. A value of `0` will prevent the toast from being dismissed automatically.
@@ -48,8 +49,10 @@ Methods: `add`, `close`, `promise`, `update`.
 | timeout | `number \| undefined` | — |
 | toastManager | `ToastManager<any> \| undefined` | — |
 
+- `closeButton` — Whether every toast shows a close button. A toast's own `closeButton` overrides this.
 - `closeIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
 - `limit` — The maximum number of toasts that can be displayed at once. When the limit is exceeded, the oldest toasts are marked as `limited` (via the `data-limited` attribute) rather than removed, so they can be hidden or animated out.
+- `position` — The corner or edge of the screen where toasts appear.
 - `timeout` — The default amount of time (in ms) before a toast is auto dismissed. A value of `0` will prevent the toast from being dismissed automatically.
 - `toastManager` — A global manager for toasts to use outside of a React component.
 

@@ -232,15 +232,22 @@ export type WheelPickerValue = string | number;
 export interface WheelPickerOption<
   T extends WheelPickerValue = WheelPickerValue,
 > {
+  /** The value this option selects. */
   value: T;
+  /** What the option shows. */
   label: React.ReactNode;
+  /** The option's text for typeahead and screen readers, when `label` isn't a string. */
   textValue?: string;
+  /** Whether the option can't be selected. The wheel skips over it. */
   disabled?: boolean;
 }
 
 export interface WheelPickerClassNames {
+  /** Classes for each option on the wheel. */
   optionItem?: string;
+  /** Classes for the band that marks the selected position. */
   highlightWrapper?: string;
+  /** Classes for the options shown inside the selection band. */
   highlightItem?: string;
 }
 
@@ -267,15 +274,25 @@ export interface WheelPickerProps<T extends WheelPickerValue = WheelPickerValue>
       "value" | "defaultValue" | "onChange"
     >,
     VariantProps<typeof wheelPickerVariants> {
+  /** The options on the wheel. */
   options: WheelPickerOption<T>[];
+  /** The selected value. Use with `onValueChange` to control it. */
   value?: T;
+  /** The value selected at first, when it isn't controlled. */
   defaultValue?: T;
+  /** Called with the new value when the wheel settles on an option. */
   onValueChange?: (value: T) => void;
+  /** Whether the options repeat, so the wheel turns endlessly in either direction. */
   infinite?: boolean;
-  visibleCount?: number; // Must be multiple of 4
+  /** The number of options around the whole wheel, which sets how sharply it curves. A quarter of them show on each side of the selected option. Use a multiple of 4. */
+  visibleCount?: number;
+  /** How quickly the wheel slows after a flick. Higher values stop it sooner. */
   dragSensitivity?: number;
+  /** How far and fast the wheel turns for mouse-wheel and keyboard scrolling. Higher values turn it further and faster. */
   scrollSensitivity?: number;
+  /** The height of each option, in pixels. Defaults to 28, 36 or 44 depending on `size`. */
   optionItemHeight?: number;
+  /** Classes for the parts of the wheel. */
   classNames?: WheelPickerClassNames;
 }
 

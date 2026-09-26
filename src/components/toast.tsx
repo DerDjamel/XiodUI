@@ -37,7 +37,9 @@ type ToastPosition =
   | "bottom-right";
 
 interface ToastProviderProps extends Toast.Provider.Props {
+  /** The corner or edge of the screen where toasts appear. */
   position?: ToastPosition;
+  /** Whether every toast shows a close button. A toast's own `closeButton` overrides this. */
   closeButton?: boolean;
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   closeIcon?: React.ReactNode;
@@ -217,6 +219,7 @@ function Toasts({
 }
 
 interface AnchoredToastProviderProps extends Toast.Provider.Props {
+  /** Whether every toast shows a close button. A toast's own `closeButton` overrides this. */
   closeButton?: boolean;
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   closeIcon?: React.ReactNode;

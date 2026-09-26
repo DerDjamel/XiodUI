@@ -92,8 +92,11 @@ export interface SortableProps
   extends
     useRender.ComponentProps<"div">,
     VariantProps<typeof sortableVariants> {
+  /** The ids of the items, in their current order. Each `SortableItem` finds its place by its `id`. */
   items: string[];
+  /** Called with the ids in their new order whenever an item moves: on drop with a pointer, or on each arrow key while moving one with the keyboard. Escape during a keyboard move calls it again with the original order. */
   onReorder: (newItems: string[]) => void;
+  /** Called with an item's id when its `SortableItemRemove` button is pressed. */
   onRemove?: (id: string) => void;
   orientation?: SortableOrientation;
 }
@@ -417,7 +420,8 @@ function Sortable({
 export interface SortableItemProps
   extends
     useRender.ComponentProps<"div">,
-    VariantProps<typeof sortableItemVariants> {
+    Pick<VariantProps<typeof sortableItemVariants>, "variant"> {
+  /** The item's id, as listed in the `Sortable`'s `items`. */
   id: string;
 }
 
@@ -491,13 +495,10 @@ function SortableItem({
 // SortableItemHandle Component
 // ============================================================================
 
-export interface SortableItemHandleProps extends useRender.ComponentProps<"div"> {
-  id?: string;
-}
+export interface SortableItemHandleProps extends useRender.ComponentProps<"div"> {}
 
 function SortableItemHandle({
   className,
-  id: _id,
   render,
   children,
   icon,
@@ -553,6 +554,7 @@ function SortableItemHandle({
 // ============================================================================
 
 export interface SortableItemRemoveProps extends useRender.ComponentProps<"button"> {
+  /** The id of the item to remove, passed to the `Sortable`'s `onRemove`. */
   id: string;
 }
 
@@ -608,6 +610,7 @@ function SortableItemRemove({
 // ============================================================================
 
 export interface SortableColumnProps extends useRender.ComponentProps<"div"> {
+  /** The column's id. It also names the column for screen readers unless you pass `aria-label`. */
   id: string;
 }
 

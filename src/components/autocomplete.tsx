@@ -24,12 +24,17 @@ function AutocompleteInput({
   clearIcon,
   ...props
 }: Omit<AutocompletePrimitive.Input.Props, "size"> & {
+  /** Whether to show a button at the end of the input that opens the list. */
   showTrigger?: boolean;
+  /** Whether to show a button at the end of the input that clears it. */
   showClear?: boolean;
+  /** Decorative content, such as an icon, shown at the start of the input. It is hidden from screen readers. */
   startAddon?: React.ReactNode;
   size?: "sm" | "default" | "lg" | number;
   ref?: React.Ref<HTMLInputElement>;
+  /** Props for the open button, such as `aria-label` or `className`. */
   triggerProps?: AutocompletePrimitive.Trigger.Props;
+  /** Props for the clear button, such as `aria-label` or `className`. */
   clearProps?: AutocompletePrimitive.Clear.Props;
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   triggerIcon?: React.ReactNode;

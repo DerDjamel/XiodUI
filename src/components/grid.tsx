@@ -75,8 +75,20 @@ const gridVariants = cva("grid", {
   },
 });
 
-interface GridProps
-  extends useRender.ComponentProps<"div">, VariantProps<typeof gridVariants> {}
+interface GridProps extends useRender.ComponentProps<"div"> {
+  /** The number of equal columns. `subgrid` lines up with the columns of a parent grid. */
+  columns?: VariantProps<typeof gridVariants>["columns"];
+  /** The number of equal rows. `subgrid` lines up with the rows of a parent grid. */
+  rows?: VariantProps<typeof gridVariants>["rows"];
+  /** How items fill the grid: along rows or columns. The `dense` options fill earlier gaps with later, smaller items. */
+  flow?: VariantProps<typeof gridVariants>["flow"];
+  /** How items line up vertically within their cells. */
+  align?: VariantProps<typeof gridVariants>["align"];
+  /** How items line up horizontally within their cells. `between` spreads the columns out with the space between them. */
+  justify?: VariantProps<typeof gridVariants>["justify"];
+  /** The space between rows and columns. `base` is 1rem on phones and 1.5rem from the `sm` breakpoint up. */
+  gap?: VariantProps<typeof gridVariants>["gap"];
+}
 
 function Grid({
   className,
@@ -201,10 +213,20 @@ const gridItemVariants = cva("", {
   },
 });
 
-interface GridItemProps
-  extends
-    useRender.ComponentProps<"div">,
-    VariantProps<typeof gridItemVariants> {}
+interface GridItemProps extends useRender.ComponentProps<"div"> {
+  /** How many columns the item spans. `full` spans every column. */
+  colSpan?: VariantProps<typeof gridItemVariants>["colSpan"];
+  /** The column line the item starts at, counting from 1 at the left edge. */
+  colStart?: VariantProps<typeof gridItemVariants>["colStart"];
+  /** The column line the item ends at, counting from 1 at the left edge. */
+  colEnd?: VariantProps<typeof gridItemVariants>["colEnd"];
+  /** How many rows the item spans. `full` spans every row. */
+  rowSpan?: VariantProps<typeof gridItemVariants>["rowSpan"];
+  /** The row line the item starts at, counting from 1 at the top. */
+  rowStart?: VariantProps<typeof gridItemVariants>["rowStart"];
+  /** The row line the item ends at, counting from 1 at the top. */
+  rowEnd?: VariantProps<typeof gridItemVariants>["rowEnd"];
+}
 
 function GridItem({
   className,

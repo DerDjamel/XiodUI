@@ -109,6 +109,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | initialFocus | `boolean \| RefObject<HTMLElement \| null> \| ((openType: InteractionType) => boolean \| void \| HTMLElement \| null) \| undefined` | — |
 | style | `CSSProperties \| ((state: DialogPopupState) => CSSProperties \| undefined) \| undefined` | — |
 
+- `bottomStickOnMobile` — Whether the dialog docks to the bottom edge as a full-width sheet on small screens.
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
 - `finalFocus` — Determines the element to focus when the dialog is closed.
   - `false`: Do not move focus.

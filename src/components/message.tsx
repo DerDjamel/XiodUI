@@ -30,6 +30,7 @@ export function MessageGroup({
 }
 
 export interface MessageProps extends useRender.ComponentProps<"div"> {
+  /** Which side the message sits on. Use `end` for the current user's messages. */
   align?: "start" | "end";
 }
 
@@ -176,6 +177,7 @@ export const bubbleVariants = cva(
 
 export interface BubbleProps
   extends useRender.ComponentProps<"div">, VariantProps<typeof bubbleVariants> {
+  /** Which side the bubble lines up with. Match the surrounding `Message`'s `align`. */
   align?: "start" | "end";
 }
 
@@ -251,7 +253,12 @@ export const bubbleReactionsVariants = cva(
 export interface BubbleReactionsProps
   extends
     useRender.ComponentProps<"div">,
-    VariantProps<typeof bubbleReactionsVariants> {}
+    VariantProps<typeof bubbleReactionsVariants> {
+  /** Whether the reactions overlap the bubble's top or bottom edge. */
+  side?: VariantProps<typeof bubbleReactionsVariants>["side"];
+  /** Whether the reactions sit near the bubble's start or end corner. */
+  align?: VariantProps<typeof bubbleReactionsVariants>["align"];
+}
 
 export function BubbleReactions({
   side = "bottom",

@@ -70,28 +70,51 @@ export type DotMatrixColorPreset =
   | "prism";
 
 export interface DotMatrixProps extends useRender.ComponentProps<"div"> {
+  /** The number of rows of dots. */
   rows?: number;
+  /** The number of columns of dots. */
   cols?: number;
+  /** What the dots show: an animation (a `preset` or your own `frames`), a fixed `pattern`, or level bars from `levels`. */
   mode?: "animation" | "static" | "vu";
+  /** The dots to light in `static` mode, one array per row. Each value is `true`/`false`, or a brightness from 0 to 1. */
   pattern?: number[][] | boolean[][];
+  /** The built-in animation to play in `animation` mode when no `frames` are given. `none` shows every dot lit. */
   preset?: DotMatrixPreset;
+  /** Your own animation for `animation` mode: a list of frames, each one array per row of brightness values from 0 to 1. Takes the place of `preset`. */
   frames?: number[][][];
+  /** Whether the animation is playing. Set it to `false` to pause. */
   isPlaying?: boolean;
+  /** Whether custom `frames` start over after the last one. When `false`, the animation stops on the last frame. */
   loop?: boolean;
+  /** Whether the animation plays on its own. Animations never play when the user prefers reduced motion. */
   autoplay?: boolean;
+  /** How many custom `frames` to show per second. */
   fps?: number;
+  /** How fast a `preset` animation plays, as a multiple of its normal speed. */
   speed?: number;
+  /** The height of each column in `vu` mode, from 0 to 1, left to right. */
   levels?: number[];
+  /** The size of each dot, in pixels. */
   dotSize?: number;
+  /** The space between dots, in pixels. */
   gap?: number;
+  /** The shape of each dot. */
   shape?: DotMatrixShape;
+  /** A gradient to colour the lit dots with. `solid` uses `color`. */
   colorPreset?: DotMatrixColorPreset;
+  /** The colour of lit dots, as a CSS colour. */
   color?: string;
+  /** The colour of unlit dots, as a CSS colour. */
   colorOff?: string;
+  /** Whether lit dots glow. */
   bloom?: boolean;
+  /** How far the glow spreads. Higher values give a softer, wider glow. */
   bloomIntensity?: number;
+  /** Whether to add a soft glow behind the whole matrix. */
   halo?: boolean;
+  /** The name screen readers announce for the matrix. */
   ariaLabel?: string;
+  /** Called with the index of each custom frame as it is shown. */
   onFrame?: (index: number) => void;
 }
 
@@ -1032,6 +1055,7 @@ export function DotMatrix({
             // Generate CSS animation classes for standard animation presets
             const useCSSAnimation =
               mode === "animation" &&
+              autoplay &&
               isPlaying &&
               !prefersReducedMotion &&
               !hasCustomFrames &&

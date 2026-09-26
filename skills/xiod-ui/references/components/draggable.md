@@ -17,10 +17,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | defaultX | `number \| undefined` | `40` |
 | defaultY | `number \| undefined` | `40` |
 | isDraggable | `boolean \| undefined` | `true` |
-| isDragging | `boolean \| null \| undefined` | `false` |
-| isMinimized | `boolean \| null \| undefined` | `false` |
 | isResizable | `boolean \| undefined` | `true` |
-| isResizing | `boolean \| null \| undefined` | `false` |
 | maxHeight | `number \| undefined` | `600` |
 | maxWidth | `number \| undefined` | `800` |
 | minHeight | `number \| undefined` | `160` |
@@ -28,6 +25,21 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | onOpenChange | `((open: boolean) => void) \| undefined` | — |
 | open | `boolean \| undefined` | — |
 | variant | `"default" \| "expressive" \| "flat" \| null \| undefined` | `"default"` |
+
+- `bounds` — What the panel can't be moved out of: the `viewport`, its `parent` element, or `none` to move freely.
+- `defaultHeight` — The panel's starting height, in pixels.
+- `defaultOpen` — Whether the panel is shown at first, when it isn't controlled.
+- `defaultWidth` — The panel's starting width, in pixels.
+- `defaultX` — The panel's starting distance from the left edge of the viewport, in pixels.
+- `defaultY` — The panel's starting distance from the top edge of the viewport, in pixels.
+- `isDraggable` — Whether the panel can be moved, by its header or handle.
+- `isResizable` — Whether the panel can be resized from its corner.
+- `maxHeight` — The tallest the panel can be resized to, in pixels.
+- `maxWidth` — The widest the panel can be resized to, in pixels.
+- `minHeight` — The shortest the panel can be resized to, in pixels.
+- `minWidth` — The narrowest the panel can be resized to, in pixels.
+- `onOpenChange` — Called with `false` when the panel's close button is pressed.
+- `open` — Whether the panel is shown. Use with `onOpenChange` to control it.
 
 ## DraggableBody
 

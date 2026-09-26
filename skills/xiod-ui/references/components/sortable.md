@@ -18,6 +18,9 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | variant | `"default" \| "ghost" \| "bordered" \| null \| undefined` | `"default"` |
 
 - `handleIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
+- `items` — The ids of the items, in their current order. Each `SortableItem` finds its place by its `id`.
+- `onRemove` — Called with an item's id when its `SortableItemRemove` button is pressed.
+- `onReorder` — Called with the ids in their new order whenever an item moves: on drop with a pointer, or on each arrow key while moving one with the keyboard. Escape during a keyboard move calls it again with the original order.
 
 ## SortableColumn
 
@@ -26,6 +29,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | Prop | Type |
 | :--- | :--- |
 | **id** | `string` |
+
+- `id` — The column's id. It also names the column for screen readers unless you pass `aria-label`.
 
 ## SortableColumnHeader
 
@@ -42,10 +47,9 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | Prop | Type | Default |
 | :--- | :--- | :--- |
 | **id** | `string` | — |
-| isDragging | `boolean \| null \| undefined` | `false` |
-| isHoveredTarget | `boolean \| null \| undefined` | `false` |
-| isKeyboardActive | `boolean \| null \| undefined` | `false` |
 | variant | `"default" \| "flat" \| "accent" \| null \| undefined` | `"default"` |
+
+- `id` — The item's id, as listed in the `Sortable`'s `items`.
 
 ## SortableItemHandle
 
@@ -54,7 +58,6 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | Prop | Type |
 | :--- | :--- |
 | icon | `ReactNode` |
-| id | `string \| undefined` |
 
 - `icon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
 
@@ -68,5 +71,6 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | **id** | `string` |
 
 - `icon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
+- `id` — The id of the item to remove, passed to the `Sortable`'s `onRemove`.
 
 Required props are bold. Full docs: https://ui.xiod.dev/docs

@@ -88,6 +88,8 @@ Renders a `<a>` and takes its props. Pass `render` to render a different element
 | :--- | :--- |
 | active | `boolean \| undefined` |
 
+- `active` — Whether the link points to the current page. Marks it with `aria-current="page"`.
+
 ## NavigationMenuList
 
 Takes the DOM props of the element it renders. Pass `render` to render a different element.
@@ -116,6 +118,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | style | `CSSProperties \| ((state: NavigationMenuPopupState) => CSSProperties \| undefined) \| undefined` | — |
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
+- `hideArrow` — Whether to hide the arrow that points at the trigger.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 
 ## NavigationMenuPortal

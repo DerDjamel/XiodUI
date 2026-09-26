@@ -10,26 +10,46 @@ import { useMediaQuery } from "../hooks/use-media-query";
 // --- Types ---
 
 export interface WaveformProps extends useRender.ComponentProps<"div"> {
-  value?: number; // Current progress fraction (0 to 1) or playback seconds
+  /** The playback position, in the same unit as `duration`. Use with `onValueChange` to control it. */
+  value?: number;
+  /** The playback position at first, when it isn't controlled. */
   defaultValue?: number;
+  /** Called with the new position when the user clicks or drags to seek. */
   onValueChange?: (value: number) => void;
-  duration?: number; // Total duration (e.g., in seconds). Defaults to 1 for progress fraction
-  active?: boolean; // Whether microphone / animation is actively running
-  processing?: boolean; // AI "Thinking" state (breathing sine wave)
+  /** The total length, in the same unit as `value`. Leave it at 1 to use `value` as a fraction from 0 to 1. */
+  duration?: number;
+  /** Whether the waveform shows live input instead of a recording. With `microphone`, the microphone is recorded while this is `true`. */
+  active?: boolean;
+  /** Whether to show a gently moving wave, for example while an assistant is thinking. Ignored while `active`. */
+  processing?: boolean;
+  /** How live input is drawn: `scrolling` adds each sample at the right edge and moves older ones left; `static` and `live` redraw the bars across the full width. */
   mode?: "static" | "scrolling" | "live";
-  microphone?: boolean; // Automatically setup microphone recording on active
+  /** Whether to record from the microphone while `active`. The browser asks the user for permission first. */
+  microphone?: boolean;
+  /** The microphone to record from, as a `deviceId` from `navigator.mediaDevices.enumerateDevices()`. Uses the default microphone when unset. */
   deviceId?: string;
+  /** The width of each bar, in pixels. */
   barWidth?: number;
+  /** The space between bars, in pixels. */
   barGap?: number;
+  /** The corner radius of each bar, in pixels. `0` gives square bars. */
   barRadius?: number;
-  barColor?: string; // Inactive bar color (fallback to CSS variables)
-  progressColor?: string; // Active bar color (fallback to CSS variables)
+  /** The colour of bars not yet played, as a CSS colour. Defaults to the `--border` token. */
+  barColor?: string;
+  /** The colour of played bars and of live input, as a CSS colour. Defaults to the `--primary` token. */
+  progressColor?: string;
+  /** Whether the bars fade out towards the left and right edges. */
   fadeEdges?: boolean;
+  /** How far the fade reaches in from each edge, in pixels. */
   fadeWidth?: number;
+  /** How strongly microphone input moves the bars. Raise it for quiet input. */
   sensitivity?: number;
+  /** How often to sample the microphone, in milliseconds. */
   updateRate?: number;
-  seed?: number; // Seed for deterministic random static waveform
-  data?: number[]; // Custom static waveform data (values between 0 and 1)
+  /** A number that picks the placeholder waveform drawn when there's no `data`. The same seed always draws the same shape. */
+  seed?: number;
+  /** The bar heights to draw, each from 0 to 1. They are stretched to fill the width. */
+  data?: number[];
 }
 
 interface WaveformContextValue {

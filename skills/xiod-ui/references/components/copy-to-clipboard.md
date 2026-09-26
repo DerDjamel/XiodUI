@@ -20,11 +20,11 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | tooltipText | `string \| undefined` | `"Copy"` |
 
 - `copiedIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
-- `copiedText` — Text shown in the toast after copying.
+- `copiedText` — The message in the toast shown after copying.
 - `copyIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
-- `disableTooltip` — Disable the tooltip entirely.
-- `text` — The text to display in the field
-- `textToCopy` — If provided, this text will be copied to clipboard instead of the `text` prop.
-- `tooltipText` — Text shown in the tooltip on hover.
+- `disableTooltip` — Whether to hide the copy button's tooltip.
+- `text` — The text shown in the field. It is also what gets copied, unless you set `textToCopy`.
+- `textToCopy` — The text to copy, when it differs from what the field shows.
+- `tooltipText` — The copy button's tooltip, also used as its accessible name.
 
 Required props are bold. Full docs: https://ui.xiod.dev/docs

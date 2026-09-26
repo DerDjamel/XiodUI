@@ -17,6 +17,11 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | size | `"sm" \| "default" \| "lg" \| null \| undefined` | — |
 | variant | `"default" \| "secondary" \| "success" \| "warning" \| "destructive" \| "info" \| "outline" \| "error" \| null \| undefined` | — |
 
+- `dot` — Whether to show a small dot instead of the badge's content.
+- `invisible` — Whether to hide the badge. It scales and fades out rather than unmounting.
+- `overlap` — The shape of the element the badge sits on. `circular` moves the badge in to meet the edge of a round element, such as an `Avatar`.
+- `position` — The corner of the parent element the badge sits on.
+
 ## CornerBadgeAnchor
 
 Renders a `<div>` and takes its props. Pass `render` to render a different element.

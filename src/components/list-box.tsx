@@ -29,9 +29,13 @@ interface ListBoxProps extends Omit<
   useRender.ComponentProps<"div">,
   "defaultValue"
 > {
+  /** The selected value: a string, or an array of strings when `multiple` is set. Use with `onValueChange` to control the selection. */
   value?: ListBoxValue;
+  /** The value selected at first, when the selection isn't controlled. */
   defaultValue?: ListBoxValue;
+  /** Called with the new value when the selection changes. */
   onValueChange?: (value: ListBoxValue) => void;
+  /** Whether more than one item can be selected. The value is then an array. */
   multiple?: boolean;
   /** Submits the selection with a form: one hidden input per selected value. */
   name?: string;
@@ -219,6 +223,7 @@ function ListBox({
 }
 
 interface ListBoxItemProps extends useRender.ComponentProps<"div"> {
+  /** The value this item selects. Must be unique within the list. */
   value: string;
   disabled?: boolean;
 }

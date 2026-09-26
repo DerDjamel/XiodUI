@@ -15,6 +15,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | copyIcon | `ReactNode` | — |
 | defaultValue | `string \| number \| readonly string[] \| undefined` | — |
 | hideIcon | `ReactNode` | — |
+| onCopy | `(() => void) \| undefined` | — |
 | onValueChange | `((value: string, eventDetails: { reason: "none"; event: Event; cancel: () => void; allowPropagation: () => void; isCanceled: boolean; isPropagationAllowed: boolean; trigger: Element \| undefined; }) => void) \| undefined` | — |
 | revealIcon | `ReactNode` | — |
 | size | `number \| "sm" \| "default" \| "lg" \| undefined` | `"default"` |
@@ -25,6 +26,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 - `copyIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
 - `defaultValue` — The default value of the input. Use when uncontrolled.
 - `hideIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
+- `onCopy` — Called after the copy button copies the value to the clipboard.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `revealIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
 - `value` — The value of the input. Use when controlled.

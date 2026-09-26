@@ -33,7 +33,7 @@ export interface ThemeProviderProps {
    * set as an attribute (e.g. `"data-theme"`).
    */
   attribute?: string;
-  /** localStorage key used to remember the choice. */
+  /** The localStorage key that remembers the user's mode. */
   storageKey?: string;
   /**
    * Palette to apply before anything is read from storage. Leave unset to ship
@@ -48,7 +48,7 @@ export interface ThemeProviderProps {
    * two axes overwrite each other on the same element.
    */
   paletteAttribute?: string;
-  /** localStorage key used to remember the palette. */
+  /** The localStorage key that remembers the user's palette. */
   paletteStorageKey?: string;
   /**
    * Nonce for the inline script that applies the stored theme before the page

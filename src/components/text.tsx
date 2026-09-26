@@ -47,7 +47,12 @@ const textVariants = cva("", {
 });
 
 export interface TextProps
-  extends useRender.ComponentProps<"p">, VariantProps<typeof textVariants> {}
+  extends useRender.ComponentProps<"p">, VariantProps<typeof textVariants> {
+  /** The font weight. When unset, the variant's own weight applies. */
+  weight?: VariantProps<typeof textVariants>["weight"];
+  /** Whether to keep the text on one line and cut it off with an ellipsis. */
+  truncate?: VariantProps<typeof textVariants>["truncate"];
+}
 
 function Text({
   className,

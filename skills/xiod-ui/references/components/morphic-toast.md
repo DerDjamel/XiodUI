@@ -21,4 +21,8 @@ Methods: `action`, `clear`, `dismiss`, `error`, `info`, `promise`, `show`, `succ
 | options | `Partial<MorphicToastOptions> \| undefined` | — |
 | position | `MorphicToastPosition \| undefined` | `"top-right"` |
 
+- `offset` — The distance from the screen edges, as a number of pixels or a CSS length. Pass an object to set `top`, `right`, `bottom` and `left` separately; only the edges the toasts sit against apply.
+- `options` — Defaults for every toast, such as `duration` or `styles`. Options passed to an individual toast override them.
+- `position` — Where toasts appear when they don't set their own `position`.
+
 Required props are bold. Full docs: https://ui.xiod.dev/docs

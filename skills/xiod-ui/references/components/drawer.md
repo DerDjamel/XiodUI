@@ -45,6 +45,7 @@ import { Drawer, DrawerBackdrop, DrawerBar, DrawerClose, DrawerContent, DrawerCr
 - `onOpenChangeComplete` — Event handler called after any animations complete when the drawer is opened or closed.
 - `onSnapPointChange` — Callback fired when the snap point changes.
 - `open` — Whether the drawer is currently open.
+- `position` — The edge of the screen the drawer slides in from. Its parts follow it unless they set their own `position`. Swipe direction follows it too, unless `swipeDirection` is set.
 - `snapPoint` — The currently active snap point. Use with `onSnapPointChange` to control the snap point.
 - `snapPoints` — Snap points used to position the drawer. Use numbers between 0 and 1 to represent fractions of the viewport height, numbers greater than 1 as pixel values, or strings in `px`/`rem` units (for example, `'148px'` or `'30rem'`).
 - `snapToSequentialPoints` — Disables velocity-based snap skipping so drag distance determines the next snap point.
@@ -72,6 +73,8 @@ Renders a `<div>` and takes its props. Pass `render` to render a different eleme
 | Prop | Type |
 | :--- | :--- |
 | position | `DrawerPosition \| undefined` |
+
+- `position` — The edge the drawer slides in from, which decides where the bar sits and which way it points. Defaults to the `Drawer`'s `position`.
 
 ## DrawerClose
 
@@ -134,6 +137,8 @@ Renders a `<div>` and takes its props. Pass `render` to render a different eleme
 | allowSelection | `boolean \| undefined` | `true` |
 | variant | `"default" \| "bare" \| undefined` | `"default"` |
 
+- `allowSelection` — Whether text in the footer can be selected with a mouse. When `false`, dragging on it with a mouse swipes the drawer instead.
+
 ## DrawerHeader
 
 Renders a `<div>` and takes its props. Pass `render` to render a different element.
@@ -141,6 +146,8 @@ Renders a `<div>` and takes its props. Pass `render` to render a different eleme
 | Prop | Type | Default |
 | :--- | :--- | :--- |
 | allowSelection | `boolean \| undefined` | `false` |
+
+- `allowSelection` — Whether text in the header can be selected with a mouse. When `false`, dragging on it with a mouse swipes the drawer instead.
 
 ## DrawerMenu
 
@@ -300,6 +307,10 @@ Renders a `<div>` and takes its props. Pass `render` to render a different eleme
 | scrollable | `boolean \| undefined` | `true` |
 | scrollFade | `boolean \| undefined` | `true` |
 
+- `allowSelection` — Whether text in the panel can be selected with a mouse. When `false`, dragging on it with a mouse swipes the drawer instead.
+- `scrollable` — Whether the panel scrolls its content when it doesn't fit.
+- `scrollFade` — Whether the content fades out at an edge that has more to scroll to.
+
 ## DrawerPopup
 
 Takes the DOM props of the element it renders. Pass `render` to render a different element.
@@ -328,7 +339,11 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
   - `true`: Move focus based on the default behavior (first tabbable element or popup).
   - `RefObject`: Move focus to the ref element.
   - `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`). Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing.
+- `position` — The edge the popup slides in from. Defaults to the `Drawer`'s `position`.
+- `showBar` — Whether to show the grab bar along the popup's inner edge.
+- `showCloseButton` — Whether to show a close button in the top corner.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
+- `variant` — The popup's shape: `default` rounds the corners on the inner edge, `straight` keeps them square, and `inset` floats the popup away from the screen edges with every corner rounded, from the `sm` breakpoint up.
 
 ## DrawerPortal
 
@@ -360,6 +375,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
 - `disabled` — Whether the swipe area is disabled.
+- `position` — The edge the swipe area sits along. Defaults to the `Drawer`'s `position`.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 - `swipeDirection` — The swipe direction that opens the drawer. Defaults to the opposite of `Drawer` `swipeDirection`.
 
@@ -407,6 +423,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | variant | `"default" \| "straight" \| "inset" \| undefined` | `"default"` |
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
+- `position` — The edge of the screen the popup is laid out against. `DrawerPopup` renders its own viewport, so set this only when composing the parts yourself.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
+- `variant` — The popup's shape: `default` rounds the corners on the inner edge, `straight` keeps them square, and `inset` floats the popup away from the screen edges with every corner rounded, from the `sm` breakpoint up.
 
 Required props are bold. Full docs: https://ui.xiod.dev/docs

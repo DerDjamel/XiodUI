@@ -19,8 +19,11 @@ export function useTimeline(): TimelineContextValue | undefined {
 }
 
 export interface TimelineProps extends useRender.ComponentProps<"div"> {
+  /** The step that is active at first, when it isn't controlled. Items before it show as completed and items after it as pending. */
   defaultValue?: number;
+  /** The active step. Items before it show as completed and items after it as pending. */
   value?: number;
+  /** Called with the new step when the active step changes through `setActiveStep` from `useTimeline`. */
   onValueChange?: (value: number) => void;
   orientation?: "horizontal" | "vertical";
 }
@@ -74,7 +77,9 @@ export function Timeline({
 }
 
 export interface TimelineItemProps extends useRender.ComponentProps<"div"> {
+  /** The item's position in the timeline, compared with the `Timeline`'s value to work out its status. */
   step?: number;
+  /** The item's status. Overrides the one worked out from `step`. */
   status?: "completed" | "active" | "pending";
 }
 

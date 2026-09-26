@@ -93,20 +93,34 @@ const DraggableContext = React.createContext<DraggableContextValue | null>(
 export interface DraggableProps
   extends
     useRender.ComponentProps<"div">,
-    VariantProps<typeof draggableVariants> {
+    Pick<VariantProps<typeof draggableVariants>, "variant"> {
+  /** The panel's starting distance from the left edge of the viewport, in pixels. */
   defaultX?: number;
+  /** The panel's starting distance from the top edge of the viewport, in pixels. */
   defaultY?: number;
+  /** The panel's starting width, in pixels. */
   defaultWidth?: number;
+  /** The panel's starting height, in pixels. */
   defaultHeight?: number;
+  /** The narrowest the panel can be resized to, in pixels. */
   minWidth?: number;
+  /** The shortest the panel can be resized to, in pixels. */
   minHeight?: number;
+  /** The widest the panel can be resized to, in pixels. */
   maxWidth?: number;
+  /** The tallest the panel can be resized to, in pixels. */
   maxHeight?: number;
+  /** What the panel can't be moved out of: the `viewport`, its `parent` element, or `none` to move freely. */
   bounds?: DraggableBounds;
+  /** Whether the panel can be moved, by its header or handle. */
   isDraggable?: boolean;
+  /** Whether the panel can be resized from its corner. */
   isResizable?: boolean;
+  /** Whether the panel is shown. Use with `onOpenChange` to control it. */
   open?: boolean;
+  /** Whether the panel is shown at first, when it isn't controlled. */
   defaultOpen?: boolean;
+  /** Called with `false` when the panel's close button is pressed. */
   onOpenChange?: (open: boolean) => void;
 }
 

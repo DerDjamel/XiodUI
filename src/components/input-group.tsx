@@ -56,8 +56,10 @@ function InputGroupAddon({
   align = "inline-start",
   render,
   ...props
-}: useRender.ComponentProps<"div"> &
-  VariantProps<typeof inputGroupAddonVariants>): React.ReactElement {
+}: useRender.ComponentProps<"div"> & {
+  /** Where the addon sits: before or after the text on the same line (`inline-*`), or on its own row above or below it (`block-*`). */
+  align?: VariantProps<typeof inputGroupAddonVariants>["align"];
+}): React.ReactElement {
   const defaultProps = {
     className: cn(inputGroupAddonVariants({ align }), className),
     "data-align": align,

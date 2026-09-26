@@ -15,17 +15,29 @@ import { IconSlot } from "./icon-provider";
 // ============================================================================
 
 export interface DashboardTileData {
+  /** The tile's id, matching the `id` of its `DashboardTile`. */
   i: string;
+  /** The column the tile starts in, counting from 0. */
   x: number;
+  /** The row the tile starts in, counting from 0. */
   y: number;
+  /** The tile's width, in columns. */
   w: number;
+  /** The tile's height, in rows. */
   h: number;
+  /** The narrowest the tile can be resized to, in columns. */
   minW?: number;
+  /** The widest the tile can be resized to, in columns. */
   maxW?: number;
+  /** The shortest the tile can be resized to, in rows. */
   minH?: number;
+  /** The tallest the tile can be resized to, in rows. */
   maxH?: number;
+  /** Whether the tile stays where it is: it can't be moved or resized, and other tiles flow around it. */
   static?: boolean;
+  /** Whether this tile can be moved. Overrides the grid's `isDraggable`. */
   isDraggable?: boolean;
+  /** Whether this tile can be resized. Overrides the grid's `isResizable`. */
   isResizable?: boolean;
 }
 
@@ -235,6 +247,20 @@ function moveElement(
   return compactLayout(updatedLayout, compactType, cols);
 }
 
+// Whether a tile can be moved or resized: never when static, otherwise its
+// own flag, falling back to the grid's.
+function canChangeTile(
+  context: DashboardGridContextValue | null,
+  id: string | undefined,
+  mode: "drag" | "resize",
+): boolean {
+  const tile = id ? context?.layout.find((item) => item.i === id) : undefined;
+  if (!context || !tile || tile.static) return false;
+  return mode === "drag"
+    ? (tile.isDraggable ?? context.isDraggable)
+    : (tile.isResizable ?? context.isResizable);
+}
+
 // Arrow key → grid step, for moving and resizing tiles from the keyboard.
 function getArrowDelta(key: string): [number, number] | null {
   switch (key) {
@@ -301,18 +327,31 @@ export interface DashboardGridProps
   extends
     useRender.ComponentProps<"div">,
     VariantProps<typeof dashboardGridVariants> {
+  /** The position and size of every tile. Keep it in state and update it from `onLayoutChange`. */
   layout: DashboardTileData[];
+  /** The number of columns: one number for every width, or an object with a count per breakpoint (`lg`, `md`, `sm`, `xs`, `xxs`). */
   cols?: number | BreakpointCols;
+  /** The smallest grid width, in pixels, at which each breakpoint applies. Only used when `cols` is an object. */
   breakpoints?: Breakpoints;
+  /** The height of one row, in pixels. */
   rowHeight?: number;
+  /** The space between tiles, in pixels, as `[horizontal, vertical]`. */
   margin?: [number, number];
+  /** The space between the tiles and the edge of the grid, in pixels, as `[horizontal, vertical]`. */
   containerPadding?: [number, number];
+  /** Which way tiles move to fill gaps: `vertical` pulls them up, `horizontal` pulls them left, and `null` leaves them where they are dropped. */
   compactType?: CompactType;
+  /** Whether a tile can't be dropped on top of another. When `false`, the other tiles move out of the way. */
   preventCollision?: boolean;
+  /** Whether tiles can be moved, by pointer or keyboard. */
   isDraggable?: boolean;
+  /** Whether tiles can be resized, by pointer or keyboard. */
   isResizable?: boolean;
+  /** Whether to draw the column and row lines behind the tiles. */
   showGridLines?: boolean;
+  /** Called with the new layout after a tile is moved or resized. */
   onLayoutChange?: (layout: DashboardTileData[]) => void;
+  /** Called with a tile's id when its remove button is pressed. The remove button only shows when this is set. */
   onTileRemove?: (id: string) => void;
 }
 
@@ -695,7 +734,8 @@ function DashboardGrid({
 export interface DashboardTileProps
   extends
     useRender.ComponentProps<"div">,
-    VariantProps<typeof dashboardTileVariants> {
+    Pick<VariantProps<typeof dashboardTileVariants>, "variant"> {
+  /** The tile's id, matching an `i` in the grid's `layout`. */
   id: string;
 }
 
@@ -756,7 +796,7 @@ function DashboardTile({
     children: (
       <>
         {children}
-        {context?.isResizable && !tileData?.static && (
+        {context && canChangeTile(context, id, "resize") && (
           <DashboardTileResizeHandle
             onPointerDown={(e) => context?.onTileResizeStart(id, e)}
             onKeyDown={(e) => {
@@ -791,8 +831,7 @@ function getMoveHandleProps(
   context: DashboardGridContextValue | null,
   id: string | undefined,
 ): React.HTMLAttributes<HTMLElement> {
-  const tile = id ? context?.layout.find((item) => item.i === id) : undefined;
-  if (!context || !id || !context.isDraggable || !tile || tile.static) {
+  if (!context || !id || !canChangeTile(context, id, "drag")) {
     return {};
   }
   return {
@@ -811,6 +850,7 @@ function getMoveHandleProps(
 }
 
 export interface DashboardTileHeaderProps extends useRender.ComponentProps<"div"> {
+  /** The id of the tile this header belongs to. With it, the header moves the tile when dragged and shows its remove button. */
   id?: string;
 }
 
@@ -829,7 +869,7 @@ function DashboardTileHeader({
 
   const handlePointerDown = React.useCallback(
     (e: React.PointerEvent) => {
-      if (id && context?.isDraggable) {
+      if (id && context && canChangeTile(context, id, "drag")) {
         context.onTileDragStart(id, e);
       }
     },
@@ -895,6 +935,7 @@ function DashboardTileTitle({
 }
 
 export interface DashboardTileControlsProps extends useRender.ComponentProps<"div"> {
+  /** The id of the tile these controls belong to. With it, and the grid's `onTileRemove` set, they show a remove button by default. */
   id?: string;
 }
 
@@ -937,6 +978,7 @@ function DashboardTileControls({
 }
 
 export interface DashboardTileHandleProps extends useRender.ComponentProps<"div"> {
+  /** The id of the tile this handle moves, by dragging or with the arrow keys. */
   id?: string;
 }
 
@@ -954,7 +996,7 @@ function DashboardTileHandle({
 
   const handlePointerDown = React.useCallback(
     (e: React.PointerEvent) => {
-      if (id && context?.isDraggable) {
+      if (id && context && canChangeTile(context, id, "drag")) {
         context.onTileDragStart(id, e);
       }
     },

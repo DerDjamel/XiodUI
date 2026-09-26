@@ -47,6 +47,7 @@ function MenuPopup({
   alignOffset?: MenuPrimitive.Positioner.Props["alignOffset"];
   side?: MenuPrimitive.Positioner.Props["side"];
   anchor?: MenuPrimitive.Positioner.Props["anchor"];
+  /** Whether to hide the arrow that points at the trigger. */
   hideArrow?: boolean;
 }): React.JSX.Element {
   return (
@@ -96,6 +97,7 @@ function MenuItem({
   variant = "default",
   ...props
 }: MenuPrimitive.Item.Props & {
+  /** Whether to indent the item so its text lines up with items that have an icon. */
   inset?: boolean;
   variant?: "default" | "destructive";
 }): React.JSX.Element {
@@ -214,6 +216,7 @@ function MenuGroupLabel({
   inset,
   ...props
 }: MenuPrimitive.GroupLabel.Props & {
+  /** Whether to indent the label so it lines up with items that have an icon. */
   inset?: boolean;
 }): React.JSX.Element {
   return (
@@ -273,6 +276,7 @@ function MenuSubTrigger({
   icon,
   ...props
 }: MenuPrimitive.SubmenuTrigger.Props & {
+  /** Whether to indent the item so its text lines up with items that have an icon. */
   inset?: boolean;
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   icon?: React.ReactNode;

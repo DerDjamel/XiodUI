@@ -7,6 +7,7 @@ import type * as React from "react";
 
 type TextareaProps = React.ComponentProps<"textarea"> & {
   size?: "sm" | "default" | "lg" | number;
+  /** Whether to drop the border, background and focus ring, leaving only the text field. Use inside your own styled container. */
   unstyled?: boolean;
 };
 

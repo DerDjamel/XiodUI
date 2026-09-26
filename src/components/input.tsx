@@ -9,7 +9,9 @@ type InputProps = Omit<
   "size" | "className" | "style"
 > & {
   size?: "sm" | "default" | "lg" | number;
+  /** Whether to drop the border, background and focus ring, leaving only the text field. Use inside your own styled container. */
   unstyled?: boolean;
+  /** Whether to render a plain `<input>` instead of Base UI's `Input`. A plain input doesn't register with a surrounding `Field`. */
   nativeInput?: boolean;
   className?: string; // Strictly string, not a function
   style?: React.CSSProperties; // Strictly object, not a function

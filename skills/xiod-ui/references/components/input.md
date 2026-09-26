@@ -20,7 +20,9 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` | — |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `nativeInput` — Whether to render a plain `<input>` instead of Base UI's `Input`. A plain input doesn't register with a surrounding `Field`.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
+- `unstyled` — Whether to drop the border, background and focus ring, leaving only the text field. Use inside your own styled container.
 - `value` — The value of the input. Use when controlled.
 
 Required props are bold. Full docs: https://ui.xiod.dev/docs

@@ -20,6 +20,7 @@ type DrawerPosition = "right" | "left" | "top" | "bottom";
 
 const DrawerContext: React.Context<{ position: DrawerPosition }> =
   createContext<{ position: DrawerPosition }>({
+    /** The edge of the screen the drawer slides in from. Its parts follow it unless given their own `position`. */
     position: "bottom",
   });
 
@@ -41,6 +42,7 @@ export function Drawer({
   position = "bottom",
   ...props
 }: DrawerPrimitive.Root.Props & {
+  /** The edge of the screen the drawer slides in from. Its parts follow it unless they set their own `position`. Swipe direction follows it too, unless `swipeDirection` is set. */
   position?: DrawerPosition;
 }): React.ReactElement {
   const contextValue = useMemo(() => ({ position }), [position]);
@@ -75,6 +77,7 @@ export function DrawerSwipeArea({
   position: positionProp,
   ...props
 }: DrawerPrimitive.SwipeArea.Props & {
+  /** The edge the swipe area sits along. Defaults to the `Drawer`'s `position`. */
   position?: DrawerPosition;
 }): React.ReactElement {
   const { position: contextPosition } = useContext(DrawerContext);
@@ -118,7 +121,9 @@ export function DrawerViewport({
   variant = "default",
   ...props
 }: DrawerPrimitive.Viewport.Props & {
+  /** The edge of the screen the popup is laid out against. `DrawerPopup` renders its own viewport, so set this only when composing the parts yourself. */
   position?: DrawerPosition;
+  /** The popup's shape: `default` rounds the corners on the inner edge, `straight` keeps them square, and `inset` floats the popup away from the screen edges with every corner rounded, from the `sm` breakpoint up. */
   variant?: "default" | "straight" | "inset";
 }): React.ReactElement {
   return (
@@ -151,9 +156,13 @@ export function DrawerPopup({
   closeIcon,
   ...props
 }: DrawerPrimitive.Popup.Props & {
+  /** Whether to show a close button in the top corner. */
   showCloseButton?: boolean;
+  /** The edge the popup slides in from. Defaults to the `Drawer`'s `position`. */
   position?: DrawerPosition;
+  /** The popup's shape: `default` rounds the corners on the inner edge, `straight` keeps them square, and `inset` floats the popup away from the screen edges with every corner rounded, from the `sm` breakpoint up. */
   variant?: "default" | "straight" | "inset";
+  /** Whether to show the grab bar along the popup's inner edge. */
   showBar?: boolean;
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   closeIcon?: React.ReactNode;
@@ -241,6 +250,7 @@ export function DrawerHeader({
   render,
   ...props
 }: useRender.ComponentProps<"div"> & {
+  /** Whether text in the header can be selected with a mouse. When `false`, dragging on it with a mouse swipes the drawer instead. */
   allowSelection?: boolean;
 }): React.ReactElement {
   const defaultProps = {
@@ -267,6 +277,7 @@ export function DrawerFooter({
   ...props
 }: useRender.ComponentProps<"div"> & {
   variant?: "default" | "bare";
+  /** Whether text in the footer can be selected with a mouse. When `false`, dragging on it with a mouse swipes the drawer instead. */
   allowSelection?: boolean;
 }): React.ReactElement {
   const defaultProps = {
@@ -326,8 +337,11 @@ export function DrawerPanel({
   render,
   ...props
 }: useRender.ComponentProps<"div"> & {
+  /** Whether the content fades out at an edge that has more to scroll to. */
   scrollFade?: boolean;
+  /** Whether the panel scrolls its content when it doesn't fit. */
   scrollable?: boolean;
+  /** Whether text in the panel can be selected with a mouse. When `false`, dragging on it with a mouse swipes the drawer instead. */
   allowSelection?: boolean;
 }): React.ReactElement {
   const defaultProps = {
@@ -362,6 +376,7 @@ export function DrawerBar({
   render,
   ...props
 }: useRender.ComponentProps<"div"> & {
+  /** The edge the drawer slides in from, which decides where the bar sits and which way it points. Defaults to the `Drawer`'s `position`. */
   position?: DrawerPosition;
 }): React.ReactElement {
   const { position: contextPosition } = useContext(DrawerContext);

@@ -20,11 +20,16 @@ import { ScrollArea } from "./scroll-area";
 // ============================================================================
 
 export interface CountryData {
-  code: string; // ISO 3166-1 alpha-2 (e.g. "US", "GB", "IN")
+  /** The two-letter ISO 3166-1 country code, such as `"US"` or `"IN"`. */
+  code: string;
+  /** The country's name, shown in the country list. */
   name: string;
-  dialCode: string; // e.g. "+1", "+44", "+91"
-  flag: string; // Emoji flag
-  mask?: string; // e.g. "(###) ###-####"
+  /** The international dialling code, such as `"+1"` or `"+91"`. */
+  dialCode: string;
+  /** The country's flag emoji. */
+  flag: string;
+  /** How the national number is laid out as it is typed, with `#` for each digit, such as `"(###) ###-####"`. */
+  mask?: string;
 }
 
 export const COUNTRIES: CountryData[] = [
@@ -489,14 +494,19 @@ export interface InputPhoneProps
   extends
     Omit<React.ComponentProps<typeof InputGroup>, "onChange">,
     VariantProps<typeof inputPhoneVariants> {
-  defaultValue?: string; // e.164 string like "+15550000000"
-  value?: string; // Controlled e.164 string
-  defaultCountry?: string; // e.g. "US"
+  /** The number at first, when it isn't controlled, in E.164 format such as `"+15550000000"`. Its dialling code picks the country. */
+  defaultValue?: string;
+  /** The number in E.164 format, such as `"+15550000000"`. Use with `onChange` to control it. */
+  value?: string;
+  /** The code of the country selected at first, such as `"US"`, when no number sets it. */
+  defaultCountry?: string;
+  /** The countries the user can choose from. Defaults to the built-in list, exported as `COUNTRIES`. */
   countries?: CountryData[];
   disabled?: boolean;
   readOnly?: boolean;
   /** Submits the E.164 value (e.g. "+15550000000") with a form under this name. */
   name?: string;
+  /** Called when the number or country changes, with the full number in E.164 format, the selected country, and the digits typed without the dialling code. */
   onChange?: (
     e164: string,
     country: CountryData,
@@ -1085,6 +1095,7 @@ function InputPhoneInput({
 // ============================================================================
 
 export interface InputPhoneFlagProps extends useRender.ComponentProps<"span"> {
+  /** The code of the country whose flag to show, such as `"GB"`. Defaults to the selected country. */
   code?: string;
 }
 

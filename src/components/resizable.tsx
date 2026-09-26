@@ -477,16 +477,24 @@ function adjustLayout({
 // --- Resizable Panel Group ---
 
 export interface ResizablePanelGroupProps extends useRender.ComponentProps<"div"> {
+  /** Whether the panels sit side by side (`horizontal`) or stacked (`vertical`). */
   direction?: "horizontal" | "vertical";
+  /** Called with each panel's size, as a percentage of the group, whenever the layout changes, including on every step of a drag. */
   onLayoutChange?: (layout: number[]) => void;
+  /** Called with each panel's size, as a percentage of the group, once the user finishes a resize: at the end of a drag, on a key press or on a double-click. */
   onLayoutChanged?: (layout: number[]) => void;
+  /** The size of each panel at first, in order. Takes precedence over each panel's `defaultSize`. A number is in pixels; a string can use `%`, `px`, `rem`, `em`, `vh` or `vw`. */
   defaultLayout?: (number | string)[];
+  /** A key to save the layout under, so it comes back on the next visit. Saved to localStorage unless you pass `storage`. Give each panel an `id` so the saved layout survives changes to the page. */
   storageKey?: string;
+  /** Where to save the layout when `storageKey` is set, instead of localStorage. */
   storage?: {
     getItem: (key: string) => string | null;
     setItem: (key: string, value: string) => void;
   };
+  /** A ref to read and set the whole layout from code, with `getLayout()` and `setLayout(layout)`. Sizes are percentages. */
   groupRef?: React.RefObject<ImperativeGroupHandle | null>;
+  /** Whether the user is prevented from resizing any panel. */
   disabled?: boolean;
 }
 
@@ -1288,17 +1296,29 @@ function ResizablePanelGroup({
 // --- Resizable Panel ---
 
 export interface ResizablePanelProps extends useRender.ComponentProps<"div"> {
+  /** A stable id for the panel. Set it when the group has a `storageKey`, so the saved layout is matched to the right panels. */
   id?: string;
+  /** The panel's size at first. When no panel sets one, the space is split evenly. A number is in pixels; a string can use `%`, `px`, `rem`, `em`, `vh` or `vw`. */
   defaultSize?: number | string;
+  /** The smallest size the user can drag the panel to. A number is in pixels; a string can use `%`, `px`, `rem`, `em`, `vh` or `vw`. */
   minSize?: number | string;
+  /** The largest size the user can drag the panel to. A number is in pixels; a string can use `%`, `px`, `rem`, `em`, `vh` or `vw`. */
   maxSize?: number | string;
+  /** Whether the panel collapses to `collapsedSize` when dragged well below `minSize` (past halfway to `collapsedSize`), or when the handle after it is double-clicked. */
   collapsible?: boolean;
+  /** The panel's size when collapsed. A number is in pixels; a string can use `%`, `px`, `rem`, `em`, `vh` or `vw`. */
   collapsedSize?: number | string;
+  /** Whether the user is prevented from resizing this panel. `panelRef` can still resize it. */
   disabled?: boolean;
+  /** What happens to the panel when the whole group changes size: `preserve-relative-size` keeps its share of the group, `preserve-pixel-size` keeps its width or height in pixels. */
   groupResizeBehavior?: "preserve-relative-size" | "preserve-pixel-size";
+  /** Called with the panel's new size, as a percentage of the group and in pixels, whenever it changes. */
   onResize?: (size: { asPercentage: number; inPixels: number }) => void;
+  /** Called when the panel collapses. */
   onCollapse?: () => void;
+  /** Called when the panel expands from collapsed. */
   onExpand?: () => void;
+  /** A ref to control the panel from code: `collapse()`, `expand()`, `resize(size)`, `isCollapsed()`, `isExpanded()` and `getSize()`. */
   panelRef?: React.RefObject<ImperativePanelHandle | null>;
 }
 
@@ -1551,8 +1571,11 @@ function ResizablePanel({
 // --- Resizable Handle ---
 
 export interface ResizableHandleProps extends useRender.ComponentProps<"button"> {
+  /** Whether to show a grip in the middle of the handle, so it's easier to see and grab. */
   withHandle?: boolean;
+  /** Whether the user is prevented from dragging this handle. */
   disabled?: boolean;
+  /** Whether double-clicking the handle leaves the panel before it as it is, instead of collapsing or expanding it. */
   disableDoubleClick?: boolean;
 }
 

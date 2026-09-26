@@ -292,10 +292,15 @@ export function formatExpiry(value: string): string {
 }
 
 export interface PaymentInputErrors {
+  /** Why the card number is invalid, if it is. */
   cardNumber?: string;
+  /** Why the expiry date is invalid, if it is. */
   expiryDate?: string;
+  /** Why the security code is invalid, if it is. */
   cvc?: string;
+  /** Why the postal code is invalid, if it is. */
   zip?: string;
+  /** Why the UPI ID is invalid, if it is. */
   upi?: string;
 }
 
@@ -405,33 +410,53 @@ export const useInputPayment = useInputPaymentContext;
 export const usePaymentInput = useInputPaymentContext;
 
 export interface InputPaymentProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Whether the user is paying by `card` or `upi`. Use with `onPaymentMethodChange` to control it. */
   paymentMethod?: PaymentMethod;
+  /** The payment method selected at first, when it isn't controlled. */
   defaultPaymentMethod?: PaymentMethod;
+  /** Called with the new method when the user switches between card and UPI. */
   onPaymentMethodChange?: (method: PaymentMethod) => void;
 
+  /** The card number, spaced in groups as it is shown. Use with `onCardNumberChange` to control it. */
   cardNumber?: string;
+  /** The card number at first, when it isn't controlled. */
   defaultCardNumber?: string;
+  /** Called with the formatted card number as the user types. */
   onCardNumberChange?: (val: string) => void;
 
+  /** The expiry date as `MM/YY`. Use with `onCardExpiryChange` to control it. */
   cardExpiry?: string;
+  /** The expiry date at first, when it isn't controlled. */
   defaultCardExpiry?: string;
+  /** Called with the formatted expiry date as the user types. */
   onCardExpiryChange?: (val: string) => void;
 
+  /** The security code. Use with `onCardCvcChange` to control it. */
   cardCvc?: string;
+  /** The security code at first, when it isn't controlled. */
   defaultCardCvc?: string;
+  /** Called with the security code as the user types, cut to the card brand's length. */
   onCardCvcChange?: (val: string) => void;
 
+  /** The postal code. Use with `onCardZipChange` to control it. */
   cardZip?: string;
+  /** The postal code at first, when it isn't controlled. */
   defaultCardZip?: string;
+  /** Called with the postal code as the user types. */
   onCardZipChange?: (val: string) => void;
 
+  /** The UPI ID, such as `name@bank`. Use with `onUpiIdChange` to control it. */
   upiId?: string;
+  /** The UPI ID at first, when it isn't controlled. */
   defaultUpiId?: string;
+  /** Called with the UPI ID as the user types. */
   onUpiIdChange?: (val: string) => void;
 
   disabled?: boolean;
   readOnly?: boolean;
+  /** Whether focus moves to the next field once a field is complete and valid, and back to the previous one on Backspace in an empty field. */
   autoFocusNext?: boolean;
+  /** Called whenever the details become valid or invalid, with a message for each field that has an error. */
   onValidationChange?: (isValid: boolean, errors: PaymentInputErrors) => void;
   children?: React.ReactNode;
 }
@@ -823,7 +848,9 @@ interface InputFieldProps extends Omit<
   size?: "sm" | "default" | "lg" | number;
   className?: string;
   style?: React.CSSProperties;
+  /** Called with the input's change event, after the field has formatted and stored the new value. */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  /** Called with the input's keydown event. */
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 }
 

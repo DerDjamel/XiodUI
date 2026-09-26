@@ -5,6 +5,35 @@ All notable changes to `xiod-ui` are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Every component prop now has a description, in your editor's hover and in
+  the Agent Skill references.
+
+### Fixed
+
+- `DashboardGrid`: a tile's own `isDraggable` and `isResizable` now apply.
+  Before, only the grid's settings did.
+- `DotMatrix`: `autoplay={false}` now stops every preset animation, not only
+  some of them.
+- `InputSensitive`: `onCopy` is typed as the callback it is, called after the
+  copy button copies the value.
+
+### Removed
+
+- Props that did nothing and only showed up in autocomplete: `Carousel`'s
+  `activeIndex` (read it from `useCarousel()`), `ColorPicker`'s
+  `showOpacitySlider`, and the `isDragging`, `isResizing`, `isStatic`,
+  `isMinimized`, `isHoveredTarget` and `isKeyboardActive` flags on
+  `SortableItem`, `DashboardTile` and `Draggable`.
+
+### Changed
+
+- `SortableItemHandle`'s `id` is now the element's HTML `id`, as on every other
+  part. It was ignored before.
+
 ## [1.1.1] — 2026-09-26
 
 ### Fixed

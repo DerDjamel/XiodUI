@@ -84,6 +84,7 @@ function ContextMenuItem({
   variant = "default",
   ...props
 }: ContextMenuPrimitive.Item.Props & {
+  /** Whether to indent the item so its text lines up with items that have an icon. */
   inset?: boolean;
   variant?: "default" | "destructive";
 }): React.JSX.Element {
@@ -207,6 +208,7 @@ function ContextMenuLabel({
   inset,
   ...props
 }: ContextMenuPrimitive.GroupLabel.Props & {
+  /** Whether to indent the label so it lines up with items that have an icon. */
   inset?: boolean;
 }): React.JSX.Element {
   return (
@@ -270,6 +272,7 @@ function ContextMenuSubTrigger({
   icon,
   ...props
 }: ContextMenuPrimitive.SubmenuTrigger.Props & {
+  /** Whether to indent the item so its text lines up with items that have an icon. */
   inset?: boolean;
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   icon?: React.ReactNode;

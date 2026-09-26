@@ -146,6 +146,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
 - `direction` — Cursor movement direction in the scrub area.
+- `label` — The label text. Dragging across it changes the value.
 - `pixelSensitivity` — Determines how many pixels the cursor must move before the value changes. A higher value will make scrubbing less sensitive.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 - `teleportDistance` — If specified, determines the distance that the cursor may move from the center of the scrub area before it will loop back around.

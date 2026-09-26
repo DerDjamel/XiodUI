@@ -69,8 +69,11 @@ function DialogPopup({
   closeIcon,
   ...props
 }: DialogPrimitive.Popup.Props & {
+  /** Whether to show the close button in the top corner. */
   showCloseButton?: boolean;
+  /** Whether the dialog docks to the bottom edge as a full-width sheet on small screens. */
   bottomStickOnMobile?: boolean;
+  /** Props for the close button, such as `aria-label` or `className`. */
   closeProps?: DialogPrimitive.Close.Props;
   /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   closeIcon?: React.ReactNode;
@@ -193,6 +196,7 @@ function DialogPanel({
   render,
   ...props
 }: useRender.ComponentProps<"div"> & {
+  /** Whether the content fades out at an edge that has more to scroll to. */
   scrollFade?: boolean;
 }): React.ReactElement {
   const defaultProps = {

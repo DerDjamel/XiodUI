@@ -15,11 +15,12 @@ type Mode = "masked" | "revealed" | "empty";
 
 type InputSensitiveProps = Omit<
   InputPrimitive.Props,
-  "size" | "className" | "style" | "type"
+  "size" | "className" | "style" | "type" | "onCopy"
 > & {
   size?: "sm" | "default" | "lg" | number;
   className?: string;
   style?: React.CSSProperties;
+  /** Called after the copy button copies the value to the clipboard. */
   onCopy?: () => void;
 };
 

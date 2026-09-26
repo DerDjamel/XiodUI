@@ -38,26 +38,15 @@ export interface CopyToClipboardProps
   extends
     useRender.ComponentProps<"div">,
     VariantProps<typeof copyToClipboardVariants> {
-  /** The text to display in the field */
+  /** The text shown in the field. It is also what gets copied, unless you set `textToCopy`. */
   text: string;
-  /**
-   * If provided, this text will be copied to clipboard instead of the `text` prop.
-   */
+  /** The text to copy, when it differs from what the field shows. */
   textToCopy?: string;
-  /**
-   * Text shown in the tooltip on hover.
-   * @default "Copy"
-   */
+  /** The copy button's tooltip, also used as its accessible name. */
   tooltipText?: string;
-  /**
-   * Text shown in the toast after copying.
-   * @default "Copied!"
-   */
+  /** The message in the toast shown after copying. */
   copiedText?: string;
-  /**
-   * Disable the tooltip entirely.
-   * @default false
-   */
+  /** Whether to hide the copy button's tooltip. */
   disableTooltip?: boolean;
 }
 

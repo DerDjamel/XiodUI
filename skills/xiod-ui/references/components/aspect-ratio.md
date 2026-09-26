@@ -12,4 +12,6 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | :--- | :--- | :--- |
 | ratio | `number \| undefined` | `1` |
 
+- `ratio` — The width divided by the height, such as `16 / 9`.
+
 Required props are bold. Full docs: https://ui.xiod.dev/docs

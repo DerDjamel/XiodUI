@@ -18,23 +18,41 @@ export interface DatePickerProps extends Omit<
   useRender.ComponentProps<"div">,
   "onSelect" | "defaultValue"
 > {
+  /** Whether the user picks one date (`single`) or a start and end date (`range`). */
   mode?: "single" | "range";
+  /** What opens the calendar: a `button` showing the formatted date, or an `input` the user can also type a date into as YYYY-MM-DD. */
   triggerType?: "button" | "input";
+  /** The date, or `{ from, to }` range, selected at first, when it isn't controlled. */
   defaultValue?: Date | DateRange;
+  /** The selected date, or `{ from, to }` in `range` mode. Use with `onSelect` to control it. */
   value?: Date | DateRange;
+  /** Called with the new date, or the new `{ from, to }` range, when the user picks or types one. */
   onSelect?: (value: Date | DateRange | undefined) => void;
+  /** The text shown when no date is selected. */
   placeholder?: string;
+  /** How the button shows a single date: `"PPP"` for September 26, 2026, `"LLL dd, y"` for Sep 26, 2026, or `"yyyy-MM-dd"` for 2026-09-26. */
   formatStr?: "PPP" | "LLL dd, y" | "yyyy-MM-dd";
+  /** The earliest date that can be selected. */
   minDate?: Date;
+  /** The latest date that can be selected. */
   maxDate?: Date;
+  /** Days that can't be selected: `true` for all, a date, a list of dates, or a function that returns `true` for a date. */
   disabled?: boolean | Date | Date[] | ((date: Date) => boolean);
+  /** How many months the calendar shows side by side. */
   numberOfMonths?: number;
+  /** Whether every month shows six weeks, so the calendar's height doesn't change between months. */
   fixedWeeks?: boolean;
+  /** The first day of the week, from 0 for Sunday to 6 for Saturday. */
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  /** Whether the calendar shows the days of the previous and next months that fill the first and last weeks. */
   showOutsideDays?: boolean;
+  /** Whether days from the previous and next months can't be selected. */
   disableOutsideDays?: boolean;
+  /** Classes for the button or input that opens the calendar. */
   triggerClassName?: string;
+  /** The `Button` variant of the trigger, when `triggerType` is `button`. */
   triggerVariant?: "default" | "outline" | "ghost" | "secondary";
+  /** The `Button` size of the trigger, when `triggerType` is `button`. */
   triggerSize?: "default" | "sm" | "lg" | "xs";
 }
 

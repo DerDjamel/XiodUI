@@ -14,4 +14,6 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | size | `"sm" \| "lg" \| "md" \| "xl" \| null \| undefined` | `"md"` |
 | variant | `"expressive" \| "ring" \| "pulse" \| "dots" \| "circular-arrows" \| "radial-pulse" \| "arc-head" \| "segmented-ring" \| "chunked-circular" \| "petal" \| "orbiting-dots" \| "dotted-ring" \| ... 4 more ... \| undefined` | `"ring"` |
 
+- `intent` — The loader's colour, from the theme's status colours.
+
 Required props are bold. Full docs: https://ui.xiod.dev/docs

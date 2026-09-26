@@ -495,10 +495,12 @@ export function useCarouselViewport(
 // Compound Component Context
 export interface CarouselProps {
   orientation?: "horizontal" | "vertical";
+  /** Whether the carousel advances on its own. It pauses while hovered or focused, while the tab is hidden, and when the user prefers reduced motion. */
   autoplay?: boolean;
+  /** The time between slides when `autoplay` is on, in milliseconds. */
   autoplayInterval?: number;
+  /** Whether going past the last slide returns to the first, and back from the first to the last. */
   loop?: boolean;
-  activeIndex?: number;
 }
 
 type CarouselContextProps = {
@@ -509,6 +511,8 @@ type CarouselContextProps = {
   canScrollPrev: boolean;
   canScrollNext: boolean;
   orientation: "horizontal" | "vertical";
+  /** The index of the slide currently in view. */
+  activeIndex: number;
 } & CarouselProps;
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
@@ -534,7 +538,9 @@ export function Carousel({
   ...props
 }: useRender.ComponentProps<"div"> &
   CarouselProps & {
+    /** Options for the scrolling behaviour, such as `align`, `dragFree` or `speed`. `loop` set here takes precedence over the `loop` prop. */
     opts?: CarouselOptions;
+    /** Plugins to run with the carousel. Each plugin's `init` receives the carousel API once it is ready. */
     plugins?: CarouselPlugin[];
   }): React.JSX.Element {
   // Translate options and merge

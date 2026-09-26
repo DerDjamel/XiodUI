@@ -30,6 +30,7 @@ function TooltipPopup({
   side?: TooltipPrimitive.Positioner.Props["side"];
   sideOffset?: TooltipPrimitive.Positioner.Props["sideOffset"];
   anchor?: TooltipPrimitive.Positioner.Props["anchor"];
+  /** Whether to hide the arrow that points at the trigger. */
   hideArrow?: boolean;
 }): React.JSX.Element {
   return (

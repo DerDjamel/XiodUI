@@ -40,42 +40,19 @@ export type KineticClickVariant =
 export type KineticClickTrigger = "click" | "mousedown";
 
 export interface KineticClickProps extends useRender.ComponentProps<"div"> {
-  /**
-   * The animation variant to trigger on click.
-   * @default "spark"
-   */
+  /** The effect that plays where the user clicks. */
   variant?: KineticClickVariant;
-  /**
-   * The particle/effect color. Accepts standard hex, rgb, or "currentColor"
-   * to automatically inherit computed style colors of the clicked target.
-   * @default "currentColor"
-   */
+  /** The colour of the effect, as a CSS colour. `currentColor` takes it from the clicked element, as `colorFrom` sets. */
   color?: string;
-  /**
-   * The style property to inherit color from when color is "currentColor".
-   * - "text": Inherits from computed text color.
-   * - "background": Inherits from computed background color.
-   * - "border": Inherits from computed border color.
-   * - "auto": Intelligently fallback from text -> background -> border (useful if text is neutral like white/black).
-   * @default "auto"
-   */
+  /** Which colour of the clicked element to use when `color` is `currentColor`. `auto` uses the first of its text, background and border colours that isn't a neutral grey, so a white-text button still gets a coloured effect. */
   colorFrom?: "text" | "background" | "border" | "auto";
-  /**
-   * Number of particles/ripples/structures to spawn.
-   */
+  /** How many particles, ripples or shapes each click creates. Each effect has its own default. */
   count?: number;
-  /**
-   * Custom scale/size metric for particles/ripples.
-   */
+  /** How large the effect is, in pixels: a particle's size, or a ripple's largest radius. Each effect has its own default. */
   size?: number;
-  /**
-   * Overall animation duration in milliseconds.
-   */
+  /** How long the effect lasts, in milliseconds. Each effect has its own default. */
   duration?: number;
-  /**
-   * Trigger event type.
-   * @default "mousedown"
-   */
+  /** When the effect plays: as soon as the button is pressed (`mousedown`), or when it is released (`click`). */
   trigger?: KineticClickTrigger;
   children?: ReactNode;
 }

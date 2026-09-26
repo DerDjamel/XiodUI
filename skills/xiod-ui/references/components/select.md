@@ -139,6 +139,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | sideOffset | `number \| OffsetFunction \| undefined` | `4` |
 | style | `CSSProperties \| ((state: SelectPopupState) => CSSProperties \| undefined) \| undefined` | — |
 
+- `alignItemWithTrigger` — Whether the popup opens with the selected item placed over the trigger, like a native select. When `false`, the popup opens beside the trigger.
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
 - `finalFocus` — Determines the element to focus when the select popup is closed.
   - `false`: Do not move focus.

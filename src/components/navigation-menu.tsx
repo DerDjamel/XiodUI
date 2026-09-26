@@ -121,6 +121,7 @@ function NavigationMenuLink({
   render,
   ...props
 }: useRender.ComponentProps<"a"> & {
+  /** Whether the link points to the current page. Marks it with `aria-current="page"`. */
   active?: boolean;
 }): React.JSX.Element {
   const defaultProps = {
@@ -188,6 +189,7 @@ function NavigationMenuPopup({
   alignOffset?: NavigationMenuPrimitive.Positioner.Props["alignOffset"];
   side?: NavigationMenuPrimitive.Positioner.Props["side"];
   anchor?: NavigationMenuPrimitive.Positioner.Props["anchor"];
+  /** Whether to hide the arrow that points at the trigger. */
   hideArrow?: boolean;
 }): React.JSX.Element {
   return (

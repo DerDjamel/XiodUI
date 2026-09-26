@@ -15,6 +15,10 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | orientation | `"horizontal" \| "vertical" \| undefined` | `"vertical"` |
 | value | `number \| undefined` | — |
 
+- `defaultValue` — The step that is active at first, when it isn't controlled. Items before it show as completed and items after it as pending.
+- `onValueChange` — Called with the new step when the active step changes through `setActiveStep` from `useTimeline`.
+- `value` — The active step. Items before it show as completed and items after it as pending.
+
 ## TimelineContent
 
 Renders a `<div>` and takes its props. Pass `render` to render a different element.
@@ -44,6 +48,9 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | :--- | :--- |
 | status | `"completed" \| "active" \| "pending" \| undefined` |
 | step | `number \| undefined` |
+
+- `status` — The item's status. Overrides the one worked out from `step`.
+- `step` — The item's position in the timeline, compared with the `Timeline`'s value to work out its status.
 
 ## TimelineSeparator
 

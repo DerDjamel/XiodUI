@@ -13,6 +13,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | align | `"start" \| "end" \| undefined` | `"start"` |
 | variant | `"default" \| "secondary" \| "destructive" \| "ghost" \| "outline" \| "muted" \| "tinted" \| null \| undefined` | `"default"` |
 
+- `align` — Which side the bubble lines up with. Match the surrounding `Message`'s `align`.
+
 ## BubbleContent
 
 Renders a `<div>` and takes its props. Pass `render` to render a different element.
@@ -26,6 +28,9 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | align | `"start" \| "end" \| null \| undefined` | `"end"` |
 | side | `"top" \| "bottom" \| null \| undefined` | `"bottom"` |
 
+- `align` — Whether the reactions sit near the bubble's start or end corner.
+- `side` — Whether the reactions overlap the bubble's top or bottom edge.
+
 ## Message
 
 Takes the DOM props of the element it renders. Pass `render` to render a different element.
@@ -33,6 +38,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | Prop | Type | Default |
 | :--- | :--- | :--- |
 | align | `"start" \| "end" \| undefined` | `"start"` |
+
+- `align` — Which side the message sits on. Use `end` for the current user's messages.
 
 ## MessageAvatar
 

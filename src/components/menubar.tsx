@@ -87,10 +87,7 @@ function MenubarPopup({
   alignOffset?: MenuPrimitive.Positioner.Props["alignOffset"];
   side?: MenuPrimitive.Positioner.Props["side"];
   anchor?: MenuPrimitive.Positioner.Props["anchor"];
-  /**
-   * Whether to hide the arrow indicator.
-   * @default false
-   */
+  /** Whether to hide the arrow that points at the menu's trigger. */
   hideArrow?: boolean;
 }): React.JSX.Element {
   return (
@@ -107,6 +104,7 @@ function MenubarPopup({
 
 function MenubarItem(
   props: MenuPrimitive.Item.Props & {
+    /** Whether to indent the item so its text lines up with items that have an icon. */
     inset?: boolean;
     variant?: "default" | "destructive";
   },
@@ -127,7 +125,10 @@ function MenubarRadioItem(
 }
 
 function MenubarLabel(
-  props: MenuPrimitive.GroupLabel.Props & { inset?: boolean },
+  props: MenuPrimitive.GroupLabel.Props & {
+    /** Whether to indent the label so it lines up with items that have an icon. */
+    inset?: boolean;
+  },
 ): React.JSX.Element {
   return <MenuGroupLabel data-slot="menubar-label" {...props} />;
 }
@@ -146,6 +147,7 @@ function MenubarShortcut(
 
 function MenubarSubTrigger(
   props: MenuPrimitive.SubmenuTrigger.Props & {
+    /** Whether to indent the item so its text lines up with items that have an icon. */
     inset?: boolean;
   },
 ): React.JSX.Element {

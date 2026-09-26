@@ -6,6 +6,7 @@ import { cn } from "cn";
 import type * as React from "react";
 
 export interface AspectRatioProps extends useRender.ComponentProps<"div"> {
+  /** The width divided by the height, such as `16 / 9`. */
   ratio?: number;
 }
 

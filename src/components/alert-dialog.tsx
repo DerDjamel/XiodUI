@@ -57,6 +57,7 @@ function AlertDialogPopup({
   bottomStickOnMobile = true,
   ...props
 }: AlertDialogPrimitive.Popup.Props & {
+  /** Whether the dialog docks to the bottom edge as a full-width sheet on small screens. */
   bottomStickOnMobile?: boolean;
 }): React.JSX.Element {
   return (

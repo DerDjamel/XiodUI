@@ -26,22 +26,34 @@ import { IconSlot } from "./icon-provider";
 export type FileStatus = "idle" | "uploading" | "success" | "error";
 
 export interface FileItem {
+  /** A unique id for the file in the list. */
   id: string;
+  /** The file itself. */
   file: File;
+  /** How much of the file has uploaded, from 0 to 100. */
   progress: number;
+  /** Where the file is in its upload. Files that fail a size or type check start as `error`. */
   status: FileStatus;
+  /** Why the file failed, shown under its name. */
   errorMessage?: string;
 }
 
 export interface FileUploadProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** The files in the list. Use with `onFilesChange` to control them, for example to update each file's `progress` and `status` while it uploads. */
   files?: FileItem[];
+  /** Called with the new list whenever files are added or removed. */
   onFilesChange?: (files: FileItem[]) => void;
+  /** Called with the files the user just picked or dropped, including ones marked with an error for their size or type. Start uploads from here. */
   onFilesAdded?: (files: File[]) => void;
+  /** Called with a file's id when it is removed from the list. */
   onFileRemove?: (id: string) => void;
   /** Called with the files left out because the list already holds `maxFiles`. */
   onFilesRejected?: (files: File[]) => void;
+  /** The most files the list can hold. Files past the limit are left out and passed to `onFilesRejected`. */
   maxFiles?: number;
+  /** The largest file size allowed, in megabytes. Larger files are added with an error. */
   maxSizeMB?: number;
+  /** The file types allowed, in the format of an input's `accept`: MIME types, wildcards such as `image/*`, or extensions such as `.pdf`, separated by commas. Other files are added with an error. */
   accept?: string;
   disabled?: boolean;
   children?: React.ReactNode;
@@ -439,6 +451,7 @@ function useFileItemContext() {
 }
 
 interface FileUploadItemProps extends useRender.ComponentProps<"div"> {
+  /** The file this item shows, from the `FileUpload`'s list. */
   fileItem: FileItem;
 }
 
@@ -846,6 +859,7 @@ export interface AttachmentProps
   extends
     useRender.ComponentProps<"div">,
     VariantProps<typeof attachmentVariants> {
+  /** The attachment's status, which sets its look: `idle` has a dashed border, `uploading` and `processing` pulse, and `error` turns it red. */
   state?: AttachmentState;
 }
 

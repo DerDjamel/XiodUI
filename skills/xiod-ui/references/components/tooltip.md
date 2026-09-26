@@ -78,6 +78,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | style | `CSSProperties \| ((state: TooltipPopupState) => CSSProperties \| undefined) \| undefined` | — |
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
+- `hideArrow` — Whether to hide the arrow that points at the trigger.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 
 ## TooltipProvider

@@ -53,23 +53,41 @@ export interface CalendarProps extends Omit<
   useRender.ComponentProps<"div">,
   "onSelect" | "disabled"
 > {
+  /** Whether the user picks one date (`single`) or a start and end date (`range`). */
   mode?: CalendarMode;
+  /** The selected date, or `{ from, to }` in `range` mode. The calendar is controlled: update it from `onSelect`. */
   selected?: Date | DateRange | null;
+  /** Called with the new date, or the new `{ from, to }` range in `range` mode, when the user picks a day. */
   onSelect?: (date: Date | DateRange | undefined) => void;
+  /** Whether to show the days of the previous and next months that fill the first and last weeks. */
   showOutsideDays?: boolean;
+  /** Whether days from the previous and next months can't be selected. */
   disableOutsideDays?: boolean;
+  /** The earliest date that can be selected. The calendar can't navigate before its month. */
   minDate?: Date;
+  /** The latest date that can be selected. The calendar can't navigate past its month. */
   maxDate?: Date;
+  /** Days that can't be selected: `true` for all, a date, a list of dates, a function that returns `true` for a date, `{ before }` and `{ after }` limits, or `{ dayOfWeek }` with 0 for Sunday. Pass an array to combine them. */
   disabled?: Matcher | Matcher[];
+  /** Named groups of days, each matched the same ways as `disabled`. Style them with `modifiersClassNames`. */
   modifiers?: Record<string, Matcher | Matcher[]>;
+  /** Classes for the days in each group named in `modifiers`, keyed by the group's name. */
   modifiersClassNames?: Record<string, string>;
+  /** The first day of the week, from 0 for Sunday to 6 for Saturday. */
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  /** How many months to show side by side. */
   numberOfMonths?: number;
+  /** Whether every month shows six weeks, so the calendar's height doesn't change between months. */
   fixedWeeks?: boolean;
+  /** Short weekday names for the column headings, starting from Sunday. Defaults to English. */
   localeWeekdays?: string[];
+  /** Full weekday names for screen readers, starting from Sunday. Defaults to English. */
   localeWeekdaysLong?: string[];
+  /** Full month names, starting from January. Defaults to English. */
   localeMonths?: string[];
+  /** Short month names, starting from January, for the month picker and the selection summary. Defaults to English. */
   localeMonthsShort?: string[];
+  /** Classes for the calendar's parts, keyed by part name. */
   classNames?: CalendarClassNames;
 }
 

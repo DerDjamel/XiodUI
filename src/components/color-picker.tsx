@@ -14,22 +14,36 @@ import { IconSlot } from "./icon-provider";
 // ==========================================
 
 export interface BlossomColorPickerValue {
+  /** The hue of the selected petal, in degrees from 0 to 360. */
   hue: number;
-  saturation: number; // Slider position (0-100)
+  /** The position of the Lightness slider, from 0 to 100. 0 is the lightest. */
+  saturation: number;
+  /** The lightness, from 0 to 100. When unset, it follows the Lightness slider's position. */
   lightness?: number;
-  originalSaturation?: number; // Base saturation of the selected petal
+  /** The saturation of the selected petal, from 0 to 100. */
+  originalSaturation?: number;
+  /** The opacity, from 0 to 100. */
   alpha: number;
+  /** Whether the selected petal is in the inner ring or an outer one. */
   layer: "inner" | "outer";
 }
 
 export interface BlossomColorPickerColor extends BlossomColorPickerValue {
+  /** The colour as a hex string, such as `"#3b82f6"`. */
   hex: string;
+  /** The colour as a CSS `hsl()` string. */
   hsl: string;
+  /** The colour with its opacity, as a CSS `hsla()` string. */
   hsla: string;
+  /** The colour as a CSS `rgb()` string. */
   rgb: string;
+  /** The colour with its opacity, as a CSS `rgba()` string. */
   rgba: string;
+  /** The red channel, from 0 to 255. */
   r: number;
+  /** The green channel, from 0 to 255. */
   g: number;
+  /** The blue channel, from 0 to 255. */
   b: number;
 }
 
@@ -684,25 +698,45 @@ export interface BlossomColorPickerProps extends Omit<
   useRender.ComponentProps<"div">,
   "value" | "defaultValue" | "onChange"
 > {
+  /** The selected colour. Use with `onChange` to control it. */
   value?: BlossomColorPickerValue;
+  /** The colour selected at first, when it isn't controlled. */
   defaultValue?: BlossomColorPickerValue;
+  /** The petal colours, as hex, `rgb()` or `hsl()` strings or `{ h, s, l }` objects. Up to 10 sit in one ring; more are split into rings by lightness. */
   colors?: ColorInput[];
+  /** Called with the new colour, in every format, whenever it changes. */
   onChange?: (color: BlossomColorPickerColor) => void;
+  /** Called with the selected colour when the picker closes. */
   onCollapse?: (color: BlossomColorPickerColor) => void;
+  /** Whether the picker ignores input. */
   disabled?: boolean;
+  /** Whether hovering the picker opens it, as well as clicking. Only applies when `collapsible`. */
   openOnHover?: boolean;
+  /** Whether the picker starts open. */
   initialExpanded?: boolean;
+  /** How long the petals take to open and close, in milliseconds. */
   animationDuration?: number;
-  showAlphaSlider?: boolean; // Circular arc slider
-  showOpacitySlider?: boolean; // Circular opacity/alpha slider on the opposite side
+  /** Whether to show the Lightness arc slider beside the petals while open. */
+  showAlphaSlider?: boolean;
+  /** Whether to show the Opacity arc slider, on the side opposite the Lightness slider, while open. */
+  showOpacitySlider?: boolean;
+  /** The diameter of the centre button, in pixels. */
   coreSize?: number;
+  /** The diameter of each petal, in pixels. */
   petalSize?: number;
+  /** Whether the centre shows the selected colour while open. When `false`, it turns white while open. */
   showCoreColor?: boolean;
+  /** The side the Lightness slider sits on. The Opacity slider takes the opposite side. When unset, the picker picks the side with the most room. */
   sliderPosition?: SliderPosition;
+  /** Whether the open picker shifts to stay inside the window, and places its sliders where there is room when `sliderPosition` is unset. */
   adaptivePositioning?: boolean;
+  /** The thickness of the ring that shows the selected colour around the petals, in pixels. */
   circularBarWidth?: number;
+  /** The thickness of the arc sliders, in pixels. */
   sliderWidth?: number;
+  /** The distance between the colour ring and the arc sliders, in pixels. */
   sliderOffset?: number;
+  /** Whether the picker closes to its centre button. When `false`, it stays open. */
   collapsible?: boolean;
 }
 
@@ -1986,8 +2020,9 @@ export function BlossomColorPicker({
 
 export interface ColorPickerProps extends Omit<
   BlossomColorPickerProps,
-  "className"
+  "className" | "showOpacitySlider"
 > {
+  /** Whether the panel always uses dark colours, whatever the page's theme. */
   darkMode?: boolean;
   className?: string;
 }
@@ -2019,7 +2054,8 @@ export function ColorPicker({
   triggerIcon,
   ...props
 }: ColorPickerProps & {
-  ref?: React.Ref<HTMLDivElement> /** Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */;
+  ref?: React.Ref<HTMLDivElement>;
+  /** Replaces the icon on the colour format switch. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`. */
   triggerIcon?: React.ReactNode;
 }): React.JSX.Element {
   // Mode of inputs: HEX, RGBA, HSLA

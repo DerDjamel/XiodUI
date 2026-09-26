@@ -62,9 +62,10 @@ const morphPaths = [
 ].join(";");
 
 export interface LoaderProps
-  extends
-    useRender.ComponentProps<"div">,
-    VariantProps<typeof loaderVariants> {}
+  extends useRender.ComponentProps<"div">, VariantProps<typeof loaderVariants> {
+  /** The loader's colour, from the theme's status colours. */
+  intent?: VariantProps<typeof loaderVariants>["intent"];
+}
 
 function Loader({
   className,

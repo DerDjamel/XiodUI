@@ -14,6 +14,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | size | `"sm" \| "default" \| "xs" \| null \| undefined` | `"default"` |
 | state | `AttachmentState \| undefined` | `"done"` |
 
+- `state` — The attachment's status, which sets its look: `idle` has a dashed border, `uploading` and `processing` pulse, and `error` turns it red.
+
 ## AttachmentAction
 
 Takes the DOM props of the element it renders. Pass `render` to render a different element.
@@ -70,6 +72,13 @@ Renders a `<button>` and takes its props. Pass `render` to render a different el
 | onFilesChange | `((files: FileItem[]) => void) \| undefined` | — |
 | onFilesRejected | `((files: File[]) => void) \| undefined` | — |
 
+- `accept` — The file types allowed, in the format of an input's `accept`: MIME types, wildcards such as `image/*`, or extensions such as `.pdf`, separated by commas. Other files are added with an error.
+- `files` — The files in the list. Use with `onFilesChange` to control them, for example to update each file's `progress` and `status` while it uploads.
+- `maxFiles` — The most files the list can hold. Files past the limit are left out and passed to `onFilesRejected`.
+- `maxSizeMB` — The largest file size allowed, in megabytes. Larger files are added with an error.
+- `onFileRemove` — Called with a file's id when it is removed from the list.
+- `onFilesAdded` — Called with the files the user just picked or dropped, including ones marked with an error for their size or type. Start uploads from here.
+- `onFilesChange` — Called with the new list whenever files are added or removed.
 - `onFilesRejected` — Called with the files left out because the list already holds `maxFiles`.
 
 ## FileUploadInput
@@ -83,6 +92,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | Prop | Type |
 | :--- | :--- |
 | **fileItem** | `FileItem` |
+
+- `fileItem` — The file this item shows, from the `FileUpload`'s list.
 
 ## FileUploadItemIcon
 

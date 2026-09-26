@@ -16,6 +16,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | style | `CSSProperties \| ((state: AvatarRootState) => CSSProperties \| undefined) \| undefined` | — |
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
+- `shape` — The avatar's shape: a circle or a square with rounded corners.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 
 ## AvatarFallback

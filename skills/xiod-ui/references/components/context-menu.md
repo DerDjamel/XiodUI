@@ -99,6 +99,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
 - `closeOnClick` — Whether to close the menu when the item is clicked.
 - `disabled` — Whether the component should ignore user interaction.
+- `inset` — Whether to indent the item so its text lines up with items that have an icon.
 - `label` — Overrides the text label to use when the item is matched during keyboard text navigation.
 - `nativeButton` — Whether the component renders a native `<button>` element when replacing it via the `render` prop. Set to `true` if the rendered element is a native button.
 - `onClick` — The click handler for the menu item.
@@ -115,6 +116,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | style | `CSSProperties \| ((state: MenuGroupLabelState) => CSSProperties \| undefined) \| undefined` |
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
+- `inset` — Whether to indent the label so it lines up with items that have an icon.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 
 ## ContextMenuPopup
@@ -304,6 +306,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
   Requires the `openOnHover` prop.
 - `disabled` — Whether the component should ignore user interaction.
 - `icon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
+- `inset` — Whether to indent the item so its text lines up with items that have an icon.
 - `label` — Overrides the text label to use when the item is matched during keyboard text navigation.
 - `nativeButton` — Whether the component renders a native `<button>` element when replacing it via the `render` prop. Set to `true` if the rendered element is a native button.
 - `openOnHover` — Whether the menu should also open when the trigger is hovered.

@@ -32,6 +32,27 @@ import { InputPayment, InputPaymentBrandIcon, InputPaymentCardNumber, InputPayme
 | readOnly | `boolean \| undefined` | `false` |
 | upiId | `string \| undefined` | — |
 
+- `autoFocusNext` — Whether focus moves to the next field once a field is complete and valid, and back to the previous one on Backspace in an empty field.
+- `cardCvc` — The security code. Use with `onCardCvcChange` to control it.
+- `cardExpiry` — The expiry date as `MM/YY`. Use with `onCardExpiryChange` to control it.
+- `cardNumber` — The card number, spaced in groups as it is shown. Use with `onCardNumberChange` to control it.
+- `cardZip` — The postal code. Use with `onCardZipChange` to control it.
+- `defaultCardCvc` — The security code at first, when it isn't controlled.
+- `defaultCardExpiry` — The expiry date at first, when it isn't controlled.
+- `defaultCardNumber` — The card number at first, when it isn't controlled.
+- `defaultCardZip` — The postal code at first, when it isn't controlled.
+- `defaultPaymentMethod` — The payment method selected at first, when it isn't controlled.
+- `defaultUpiId` — The UPI ID at first, when it isn't controlled.
+- `onCardCvcChange` — Called with the security code as the user types, cut to the card brand's length.
+- `onCardExpiryChange` — Called with the formatted expiry date as the user types.
+- `onCardNumberChange` — Called with the formatted card number as the user types.
+- `onCardZipChange` — Called with the postal code as the user types.
+- `onPaymentMethodChange` — Called with the new method when the user switches between card and UPI.
+- `onUpiIdChange` — Called with the UPI ID as the user types.
+- `onValidationChange` — Called whenever the details become valid or invalid, with a message for each field that has an error.
+- `paymentMethod` — Whether the user is paying by `card` or `upi`. Use with `onPaymentMethodChange` to control it.
+- `upiId` — The UPI ID, such as `name@bank`. Use with `onUpiIdChange` to control it.
+
 ## InputPaymentBrandIcon
 
 Renders a `<div>` and takes its props. Pass `render` to render a different element.
@@ -58,6 +79,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` | — |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -77,6 +100,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` | — |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -96,6 +121,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` | — |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -150,6 +177,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` | — |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -179,6 +208,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` | — |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -210,6 +241,27 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | readOnly | `boolean \| undefined` |
 | upiId | `string \| undefined` |
 
+- `autoFocusNext` — Whether focus moves to the next field once a field is complete and valid, and back to the previous one on Backspace in an empty field.
+- `cardCvc` — The security code. Use with `onCardCvcChange` to control it.
+- `cardExpiry` — The expiry date as `MM/YY`. Use with `onCardExpiryChange` to control it.
+- `cardNumber` — The card number, spaced in groups as it is shown. Use with `onCardNumberChange` to control it.
+- `cardZip` — The postal code. Use with `onCardZipChange` to control it.
+- `defaultCardCvc` — The security code at first, when it isn't controlled.
+- `defaultCardExpiry` — The expiry date at first, when it isn't controlled.
+- `defaultCardNumber` — The card number at first, when it isn't controlled.
+- `defaultCardZip` — The postal code at first, when it isn't controlled.
+- `defaultPaymentMethod` — The payment method selected at first, when it isn't controlled.
+- `defaultUpiId` — The UPI ID at first, when it isn't controlled.
+- `onCardCvcChange` — Called with the security code as the user types, cut to the card brand's length.
+- `onCardExpiryChange` — Called with the formatted expiry date as the user types.
+- `onCardNumberChange` — Called with the formatted card number as the user types.
+- `onCardZipChange` — Called with the postal code as the user types.
+- `onPaymentMethodChange` — Called with the new method when the user switches between card and UPI.
+- `onUpiIdChange` — Called with the UPI ID as the user types.
+- `onValidationChange` — Called whenever the details become valid or invalid, with a message for each field that has an error.
+- `paymentMethod` — Whether the user is paying by `card` or `upi`. Use with `onPaymentMethodChange` to control it.
+- `upiId` — The UPI ID, such as `name@bank`. Use with `onUpiIdChange` to control it.
+
 ## PaymentInputBrandIcon
 
 Takes the DOM props of the element it renders. Pass `render` to render a different element.
@@ -236,6 +288,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -255,6 +309,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -274,6 +330,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -328,6 +386,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 
@@ -357,6 +417,8 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | value | `string \| number \| readonly string[] \| undefined` |
 
 - `defaultValue` — The default value of the input. Use when uncontrolled.
+- `onChange` — Called with the input's change event, after the field has formatted and stored the new value.
+- `onKeyDown` — Called with the input's keydown event.
 - `onValueChange` — Callback fired when the `value` changes. Use when controlled.
 - `value` — The value of the input. Use when controlled.
 

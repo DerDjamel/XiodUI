@@ -153,21 +153,21 @@ export interface AgentStepsProps
   extends
     useRender.ComponentProps<"div">,
     VariantProps<typeof agentStepsVariants> {
-  /** [Single-mode] The current active step label */
+  /** The text of the step shown. Used when there are no `children`. */
   label?: React.ReactNode;
-  /** [Single-mode] The icon type or XiodIcons component to show */
+  /** The step's icon: a built-in name such as `thinking` or `searching`, or an icon component. Used when there are no `children`. */
   icon?: AgentStepIconValue;
-  /** [Single-mode] The status of the step. Default is "running". */
+  /** The step's status. `completed`, `failed` and `waiting` show their own icon and text style; the shimmer and spinner only run while `running`. Used when there are no `children`. */
   status?: "waiting" | "running" | "completed" | "failed";
-  /** [Single-mode] Whether to show the icon. Default is true. */
+  /** Whether to show the icon. Used when there are no `children`. */
   showIcon?: boolean;
-  /** [Single-mode] Optional array of steps to cycle through automatically */
+  /** Steps to show one after another, every `interval` milliseconds, looping. Take the place of `label` and `icon`. Used when there are no `children`. */
   steps?: AgentStepItem[] | string[];
-  /** [Single-mode] Transition interval for automatic cycling in milliseconds. Default is 4000. */
+  /** How long each of the `steps` is shown, in milliseconds. */
   interval?: number;
-  /** [Single-mode] Whether to disable the shimmering text sweep. Default is false. */
+  /** Whether to turn off the shimmer that sweeps across the text. Used when there are no `children`. */
   disableShimmer?: boolean;
-  /** [Single-mode] Whether to show the spinning dashed ring. Default is false. */
+  /** Whether to show a spinning dashed ring around the icon while the step is `running`. Used when there are no `children`. */
   showSpinner?: boolean;
 }
 
@@ -475,6 +475,7 @@ export function AgentStepIcon({
 }
 
 export interface AgentStepLabelProps extends useRender.ComponentProps<"span"> {
+  /** Whether the label shows a shimmer sweep while its step is running. */
   shimmer?: boolean;
 }
 

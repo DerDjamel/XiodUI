@@ -55,6 +55,7 @@ function PreviewCardPopup({
   side?: PreviewCardPrimitive.Positioner.Props["side"];
   sideOffset?: PreviewCardPrimitive.Positioner.Props["sideOffset"];
   anchor?: PreviewCardPrimitive.Positioner.Props["anchor"];
+  /** Whether to hide the arrow that points at the trigger. */
   hideArrow?: boolean;
 }): React.JSX.Element {
   return (

@@ -108,6 +108,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | style | `CSSProperties \| ((state: ComboboxChipState) => CSSProperties \| undefined) \| undefined` |
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
+- `removeProps` — Props for the chip's remove button, such as `aria-label` or `className`.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 
 ## ComboboxChips
@@ -121,6 +122,7 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 | style | `CSSProperties \| ((state: ComboboxChipsState) => CSSProperties \| undefined) \| undefined` |
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
+- `startAddon` — Decorative content, such as an icon, shown at the start of the chips. It is hidden from screen readers.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 
 ## ComboboxChipsInput
@@ -220,9 +222,14 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
 - `clearIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
+- `clearProps` — Props for the clear button, such as `aria-label` or `className`.
 - `disabled` — Whether the component should ignore user interaction.
+- `showClear` — Whether to show a button at the end of the input that clears it.
+- `showTrigger` — Whether to show a button at the end of the input that opens the list.
+- `startAddon` — Decorative content, such as an icon, shown at the start of the input. It is hidden from screen readers.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 - `triggerIcon` — Replaces this icon. Accepts any node; `null` renders no icon. Takes precedence over `IconProvider`.
+- `triggerProps` — Props for the open button, such as `aria-label` or `className`.
 
 ## ComboboxItem
 

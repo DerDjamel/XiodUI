@@ -69,6 +69,7 @@ function PaginationItem({
 }
 
 type PaginationLinkProps = {
+  /** Whether the link is the current page. Highlights it and marks it with `aria-current="page"`. */
   isActive?: boolean;
   size?: React.ComponentProps<typeof Button>["size"];
 } & useRender.ComponentProps<"a">;
@@ -243,8 +244,11 @@ export interface PaginationInputProps extends Omit<
   React.ComponentProps<"input">,
   "value" | "onChange"
 > {
+  /** The current page number. */
   value?: number;
+  /** Called with the page number when the user presses Enter or leaves the input. The number is clamped between 1 and `totalPages`. */
   onChange?: (page: number) => void;
+  /** The number of pages. Entries above it are clamped to it. */
   totalPages?: number;
 }
 

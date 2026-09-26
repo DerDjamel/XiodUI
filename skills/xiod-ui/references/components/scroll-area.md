@@ -21,6 +21,11 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 
 - `className` — CSS class applied to the element, or a function that returns a class based on the component's state.
 - `overflowEdgeThreshold` — The threshold in pixels that must be passed before the overflow edge attributes are applied. Accepts a single number for all edges or an object to configure them individually.
+- `scrollbarGutter` — Whether to reserve space for the scrollbars so they don't overlap the content.
+- `scrollbarSize` — The thickness of the scrollbars.
+- `scrollbarVariant` — The scrollbar style. `card` gives the track a background and border.
+- `scrollbarVisibility` — When the scrollbars show: `auto` while scrolling or hovered, `hover` only while hovered, `always` all the time.
+- `scrollFade` — Whether the content fades out at an edge that has more to scroll to.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
 
 ## ScrollBar
@@ -41,5 +46,6 @@ Takes the DOM props of the element it renders. Pass `render` to render a differe
 - `keepMounted` — Whether to keep the HTML element in the DOM when the viewport isn't scrollable.
 - `orientation` — Whether the scrollbar controls vertical or horizontal scroll.
 - `style` — Style applied to the element, or a function that returns a style object based on the component's state.
+- `visibility` — When the scrollbar shows: `auto` while scrolling or hovered, `hover` only while hovered, `always` all the time.
 
 Required props are bold. Full docs: https://ui.xiod.dev/docs

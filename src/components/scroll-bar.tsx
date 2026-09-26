@@ -36,7 +36,10 @@ const scrollBarVariants = cva(
 export interface ScrollBarProps
   extends
     ScrollAreaPrimitive.Scrollbar.Props,
-    VariantProps<typeof scrollBarVariants> {}
+    VariantProps<typeof scrollBarVariants> {
+  /** When the scrollbar shows: `auto` while scrolling or hovered, `hover` only while hovered, `always` all the time. */
+  visibility?: VariantProps<typeof scrollBarVariants>["visibility"];
+}
 
 function ScrollBar({
   className,
